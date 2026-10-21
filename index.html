@@ -39,10 +39,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,syst
 .login-page h2 i{color:var(--primary)}
 .login-sub{color:var(--gray-500);margin-bottom:24px;padding-left:14px;border-left:3px solid var(--primary);font-size:0.95rem}
 .login-form label{font-weight:600;color:var(--gray-700);display:block;margin:16px 0 6px;font-size:0.9rem}
-.login-form select{width:100%;padding:14px 18px;border-radius:var(--radius);border:2px solid var(--gray-200);background:#fff;font-size:1rem;outline:none;transition:0.2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234f46e5' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px}
-.login-form select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,0.15)}
-.login-form input[type="password"]{width:100%;padding:14px 18px;border-radius:var(--radius);border:2px solid var(--gray-200);background:#fff;font-size:1rem;outline:none;transition:0.2s}
-.login-form input[type="password"]:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,0.15)}
+.login-form select, .login-form input[type="text"], .login-form input[type="password"]{width:100%;padding:14px 18px;border-radius:var(--radius);border:2px solid var(--gray-200);background:#fff;font-size:1rem;outline:none;transition:0.2s;}
+.login-form select:focus, .login-form input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,0.15)}
 .login-btn{width:100%;padding:14px;background:var(--primary);border:none;border-radius:var(--radius);color:#fff;font-weight:700;font-size:1.05rem;cursor:pointer;transition:0.2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px}
 .login-btn:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:var(--shadow)}
 .login-error{color:var(--danger);background:#fef2f2;padding:12px 16px;border-radius:var(--radius);margin-top:12px;display:none}
@@ -54,7 +52,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,syst
 .app-header h1{font-size:1.4rem;font-weight:700;color:var(--gray-900);display:flex;align-items:center;gap:10px}
 .app-header h1 i{color:var(--primary)}
 .header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.user-badge{background:var(--gray-100);padding:6px 16px;border-radius:40px;font-weight:600;font-size:0.85rem;color:var(--gray-700);display:flex;align-items:center;gap:6px}
+.user-badge{background:var(--gray-100);padding:6px 16px;border-radius:40px;font-weight:600;font-size:0.85rem;color:var(--gray-700);display:flex;align-items:center;gap:6px;cursor:pointer;transition:0.2s;}
+.user-badge:hover{background:var(--gray-200);}
 .logout-btn{background:transparent;border:1px solid var(--gray-200);padding:6px 16px;border-radius:40px;font-weight:600;color:var(--gray-600);cursor:pointer;transition:0.2s;display:flex;align-items:center;gap:6px}
 .logout-btn:hover{background:var(--gray-100);border-color:var(--gray-300)}
 .top-bar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0;align-items:center}
@@ -91,10 +90,25 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,syst
 .rating-badge.meets{background:#fef3c7;color:#92400e}
 .rating-badge.need{background:#fed7aa;color:#9a3412}
 .rating-badge.unsatisfactory{background:#fecaca;color:#991b1b}
+
 .filter-group{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
-.filter-btn{padding:6px 16px;border-radius:40px;border:2px solid var(--gray-200);background:transparent;font-weight:600;font-size:0.8rem;cursor:pointer;transition:0.2s;color:var(--gray-600)}
-.filter-btn:hover{border-color:var(--gray-400)}
-.filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.filter-btn{padding:6px 16px;border-radius:40px;border:2px solid transparent;font-weight:600;font-size:0.8rem;cursor:pointer;transition:0.2s;}
+.filter-btn[data-level="all"]{background:#f1f5f9;color:#475569}
+.filter-btn[data-level="Outstanding"]{background:#d1fae5;color:#065f46}
+.filter-btn[data-level="Exceeds Expectations"]{background:#a7f3d0;color:#065f46}
+.filter-btn[data-level="Meets Expectations"]{background:#fef3c7;color:#92400e}
+.filter-btn[data-level="Needs Improvement"]{background:#fed7aa;color:#9a3412}
+.filter-btn[data-level="Unsatisfactory"]{background:#fecaca;color:#991b1b}
+.filter-btn[data-level="Approved"]{background:#d1fae5;color:#065f46;border-color:#10b981}
+.filter-btn[data-level="Disputed"]{background:#fee2e2;color:#991b1b;border-color:#ef4444}
+.filter-btn[data-level="Submitted"]{background:#dbeafe;color:#1d4ed8;border-color:#3b82f6}
+.filter-btn[data-level="In progress"]{background:#fef3c7;color:#92400e;border-color:#f59e0b}
+.filter-btn[data-level="Not started"]{background:#f1f5f9;color:#64748b;border-color:#cbd5e1}
+.filter-btn[data-level="Recalled"]{background:#e0e7ff;color:#4338ca;border-color:#6366f1}
+
+.filter-btn:hover{opacity:0.8;}
+.filter-btn.active{background:var(--primary) !important;color:#fff !important;border-color:var(--primary-dark) !important;box-shadow:var(--shadow);}
+
 .table-wrap{border-radius:var(--radius);border:1px solid var(--gray-200);overflow:auto;margin:8px 0}
 table{width:100%;border-collapse:collapse;font-size:0.9rem}
 th{background:var(--gray-50);color:var(--gray-700);font-weight:700;padding:12px 14px;text-align:left;border-bottom:2px solid var(--gray-200);white-space:nowrap}
@@ -105,6 +119,8 @@ tr:hover td{background:var(--gray-50)}
 .status-badge.approved{background:#d1fae5;color:#065f46}
 .status-badge.pending{background:#f1f5f9;color:var(--gray-500)}
 .status-badge.awaiting{background:#dbeafe;color:#1d4ed8}
+.status-badge.disputed{background:#fef2f2;color:#991b1b}
+.status-badge.recalled{background:#e0e7ff;color:#4338ca}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:40px;font-weight:600;font-size:0.85rem;border:none;cursor:pointer;transition:0.2s}
 .btn-primary{background:var(--primary);color:#fff}
 .btn-primary:hover{background:var(--primary-dark);box-shadow:var(--shadow)}
@@ -134,6 +150,7 @@ tr:hover td{background:var(--gray-50)}
 .param-row{padding:12px 0;border-top:1px solid var(--gray-200)}
 .param-row:first-child{border-top:none}
 .param-label{font-weight:600;margin-bottom:6px;display:block}
+.param-label .param-weight{font-weight:400;font-size:0.75rem;color:var(--primary);margin-left:6px;background:#e0e7ff;padding:1px 8px;border-radius:20px;}
 .param-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
 .param-select{padding:10px 14px;border-radius:var(--radius);border:2px solid var(--gray-200);background:#fff;font-weight:600;min-width:180px;outline:none;transition:0.2s}
 .param-select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,0.15)}
@@ -189,11 +206,13 @@ tr:hover td{background:var(--gray-50)}
 .summary-review .hr-label{color:var(--primary);font-weight:500;cursor:pointer}
 .summary-review .hr-label:hover{text-decoration:underline}
 .summary-review .final-label{color:var(--gray-800);font-weight:600}
-.summary-ratings-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:8px 0;border-bottom:1px solid var(--gray-100);font-size:0.85rem}
+.summary-ratings-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:8px 0;border-bottom:1px solid var(--gray-100);font-size:0.85rem;align-items:center;}
 .summary-ratings-row .col-header{font-weight:600;color:var(--gray-700)}
 .summary-ratings-row .self-col{color:var(--gray-600)}
 .summary-ratings-row .hr-col{color:var(--primary)}
 .summary-ratings-row .final-col{color:var(--gray-800);font-weight:600}
+.summary-ratings-row.has-weight{grid-template-columns:1fr 0.5fr 1fr 1fr 1fr;}
+.summary-ratings-row.has-weight .weight-col{color:var(--primary);font-weight:600;text-align:center;font-size:0.8rem;}
 .hr-rating-mode .self-col{opacity:0.6}
 .hr-rating-mode .hr-col select{display:inline-block}
 .hr-rating-mode .hr-col .hr-static{display:none}
@@ -204,6 +223,8 @@ tr:hover td{background:var(--gray-50)}
 .hr-status-msg.awaiting{background:#dbeafe;color:#1d4ed8}
 .hr-status-msg.approved{background:#d1fae5;color:#065f46}
 .hr-status-msg.not-started{background:#f1f5f9;color:var(--gray-500)}
+.hr-status-msg.disputed{background:#fef2f2;color:#991b1b}
+.hr-status-msg.recalled{background:#e0e7ff;color:#4338ca}
 .review-label{font-weight:600;font-size:0.9rem;margin-bottom:8px;display:block}
 .review-label .badge{font-weight:400;font-size:0.8rem;padding:2px 12px;border-radius:40px;margin-left:8px}
 .badge-pending{background:#fef3c7;color:#92400e}
@@ -241,6 +262,87 @@ tr:hover td{background:var(--gray-50)}
 .summary-header .overall .label{font-size:0.8rem;color:var(--gray-500)}
 .review-label-header{font-weight:600;font-size:0.9rem;color:var(--gray-700);margin-bottom:12px}
 .pass-code{background:var(--gray-100);padding:3px 10px;border-radius:6px;font-weight:700;font-family:monospace;font-size:0.85rem;color:var(--gray-800);letter-spacing:1px;border:1px solid var(--gray-200)}
+.dispute-btn-small{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5;padding:2px 8px;border-radius:4px;font-size:0.7rem;cursor:pointer;margin-left:8px;white-space:nowrap;}
+.dispute-btn-small:hover{background:#fecaca;}
+.dispute-reason-box{background:#fffbeb;border:1px solid #fcd34d;padding:12px;border-radius:8px;margin-top:8px;margin-bottom:8px}
+.dispute-reason-box textarea{width:100%;padding:8px;border-radius:6px;border:1px solid #d1d5db;resize:vertical;min-height:60px;margin-bottom:8px;font-family:inherit}
+
+/* Settings Sub-Pages & Excel Grid */
+.sub-page { display: none; max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); }
+.settings-menu-btn { width: 100%; text-align: left; padding: 16px 20px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); font-size: 1rem; font-weight: 600; color: var(--gray-800); cursor: pointer; margin-bottom: 12px; transition: 0.2s; display: flex; justify-content: space-between; align-items: center; }
+.settings-menu-btn:hover { background: var(--gray-100); border-color: var(--gray-300); }
+.emp-select-box { padding: 10px; border: 1px solid #ccc; border-radius: 6px; width: 100%; font-family: inherit; font-size: 0.95rem; margin-bottom: 12px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.9rem; }
+.form-group input, .form-group select { width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--gray-300); font-size: 0.95rem; }
+
+/* Category Weight Allocation — Detailed Criteria Table */
+.weight-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 4px; }
+.weight-table th { background: var(--gray-100); color: var(--gray-700); font-weight: 700; padding: 10px 12px; text-align: left; border-bottom: 2px solid var(--gray-300); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.3px; }
+.weight-table th.col-no { width: 70px; text-align: center; }
+.weight-table th.col-weight { width: 140px; text-align: center; }
+.weight-table td { padding: 8px 12px; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
+.weight-table tr.cat-row td { background: #eef2ff; font-weight: 700; color: var(--primary-dark); font-size: 0.95rem; }
+.weight-table tr.cat-row:hover td { background: #e0e7ff; }
+.weight-table tr.param-row td { background: #fff; }
+.weight-table tr.param-row:hover td { background: var(--gray-50); }
+.weight-table tr.param-row td.col-criteria { padding-left: 40px; color: var(--gray-600); font-weight: 500; }
+.weight-table tr.total-row td { background: var(--gray-100); font-weight: 800; color: var(--gray-900); border-top: 2px solid var(--gray-400); font-size: 0.95rem; }
+.weight-table td.col-no { text-align: center; color: var(--gray-500); font-family: monospace; font-size: 0.85rem; }
+.weight-table td.col-weight { text-align: center; }
+.weight-table td.col-weight input { width: 82px; padding: 6px 8px; border: 2px solid var(--gray-200); border-radius: 6px; text-align: center; font-weight: 700; font-family: inherit; font-size: 0.88rem; transition: 0.2s; }
+.weight-table td.col-weight input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.15); }
+.weight-table td.col-weight input.invalid { border-color: var(--danger); background: #fef2f2; }
+.weight-table td.col-weight .pct-sign { font-size: 0.8rem; color: var(--gray-500); margin-left: 3px; }
+.weight-summary-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 18px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); margin-top: 16px; font-size: 0.9rem; }
+.weight-summary-bar .total-ok { color: var(--success); font-weight: 700; }
+.weight-summary-bar .total-bad { color: var(--danger); font-weight: 700; }
+.weight-summary-bar .hint { font-size: 0.78rem; color: var(--gray-500); }
+
+/* Assign Categories — Single Selection Criteria Table */
+.assign-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 4px; }
+.assign-table th { background: var(--gray-100); color: var(--gray-700); font-weight: 700; padding: 10px 8px; text-align: center; border-bottom: 2px solid var(--gray-300); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.3px; vertical-align: middle; }
+.assign-table th.criteria-head { text-align: left; }
+.assign-table th.sc-head { background: #e0e7ff; color: var(--primary-dark); }
+.assign-table th.wt-head { background: #d1fae5; color: #065f46; }
+.assign-table th.base-head { background: var(--gray-200); color: var(--gray-700); }
+.assign-table td { padding: 8px 10px; border-bottom: 1px solid var(--gray-100); vertical-align: middle; text-align: center; }
+.assign-table td.col-criteria { text-align: left; }
+.assign-table tr.cat-row td { background: #eef2ff; font-weight: 700; color: var(--primary-dark); font-size: 0.92rem; }
+.assign-table tr.cat-row:hover td { background: #e0e7ff; }
+.assign-table tr.param-row td { background: #fff; }
+.assign-table tr.param-row:hover td { background: var(--gray-50); }
+.assign-table tr.param-row td.col-criteria { padding-left: 36px; color: var(--gray-600); font-weight: 500; }
+.assign-table tr.param-row.deselected td.col-criteria { color: var(--gray-400); text-decoration: line-through; text-decoration-color: var(--gray-300); }
+.assign-table tr.total-row td { background: var(--gray-100); font-weight: 800; color: var(--gray-900); border-top: 2px solid var(--gray-400); font-size: 0.9rem; }
+.assign-table td.col-no { color: var(--gray-500); font-family: monospace; font-size: 0.8rem; }
+.assign-table td.col-base { font-weight: 600; color: var(--gray-600); font-size: 0.82rem; }
+.assign-table td.col-check input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary); }
+.assign-table td.col-weight { font-weight: 700; color: var(--primary); font-size: 0.85rem; }
+.assign-table td.col-weight.rebalanced { color: var(--warning); font-weight: 800; background: #fffbeb; }
+.assign-table td.col-weight.zero { color: var(--gray-300); font-weight: 400; }
+.assign-table td.col-total { font-weight: 800; }
+.assign-summary-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 18px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); margin-top: 16px; font-size: 0.85rem; }
+.assign-summary-bar .stat { display: flex; align-items: center; gap: 6px; }
+.assign-summary-bar .stat strong { color: var(--primary); }
+
+/* Excel Grid Specific Styles */
+.excel-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.excel-table th, .excel-table td { border: 1px solid var(--gray-300); padding: 8px; text-align: left; vertical-align: middle; }
+.excel-table th { background: var(--gray-100); font-weight: 600; font-size: 0.85rem; }
+.excel-table input[type="text"], .excel-table select { width: 100%; padding: 8px; border: 1px solid transparent; border-radius: 4px; font-family: inherit; font-size: 0.9rem; background: transparent; transition: 0.2s; }
+.excel-table input[type="text"]:focus, .excel-table select:focus { background: #fff; border-color: var(--primary); outline: none; box-shadow: 0 0 0 2px rgba(79,70,229,0.15); }
+.excel-table input[readonly] { background: var(--gray-50); color: var(--gray-600); }
+.excel-table .row-delete-btn { color: var(--danger); cursor: pointer; background: none; border: none; font-size: 1.1rem; }
+.excel-table .row-delete-btn:hover { color: #dc2626; }
+
+@media (max-width:900px) {
+  .assign-table { font-size: 0.72rem; }
+  .assign-table th, .assign-table td { padding: 5px 6px; }
+  .assign-table th { font-size: 0.65rem; }
+  .assign-table tr.param-row td.col-criteria { padding-left: 16px; }
+  .assign-table td.col-check input[type="checkbox"] { width: 15px; height: 15px; }
+}
 @media (max-width:768px){
   body{padding:8px}
   .app-container{padding:12px}
@@ -259,25 +361,56 @@ tr:hover td{background:var(--gray-50)}
   .summary-grid{grid-template-columns:1fr}
   .submitted-summary .summary-header{flex-direction:column;align-items:stretch;text-align:center}
   .summary-ratings-row{grid-template-columns:1fr;gap:4px}
+  .summary-ratings-row.has-weight{grid-template-columns:1fr;}
   .category-assign-row .cat-grid{grid-template-columns:1fr}
+  .excel-table { display: block; overflow-x: auto; white-space: nowrap; }
+  .weight-table { font-size: 0.8rem; }
+  .weight-table th, .weight-table td { padding: 6px 8px; }
+  .weight-table td.col-weight input { width: 66px; padding: 4px 6px; font-size: 0.8rem; }
+  .weight-table th.col-no, .weight-table td.col-no { display: none; }
+  .weight-table tr.param-row td.col-criteria { padding-left: 18px; }
+  .weight-summary-bar { flex-direction: column; align-items: stretch; text-align: center; }
 }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="login-page" id="loginPage">
+  
+  <div class="login-page" id="landingPage">
     <h2><i class="fas fa-cloud"></i> Perform<span style="font-weight:300;color:var(--gray-400)">Cloud</span></h2>
     <div class="login-sub">Real-time Cloud Sync · Multi-user</div>
-    <div class="login-form">
-      <label for="loginSelect"><i class="fas fa-user-circle"></i> Select User</label>
-      <select id="loginSelect"><option value="hr">👤 HR Administrator</option></select>
-      <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
-      <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="off" />
-      <button class="login-btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
-      <div class="login-error" id="loginError">Invalid credentials.</div>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-top: 24px;">
+      <button class="login-btn" id="btnHrAdmin" style="margin-top:0;"><i class="fas fa-user-tie"></i> HR Administrator</button>
+      <button class="login-btn" id="btnEmpLogin" style="margin-top:0; background:#10b981;"><i class="fas fa-user"></i> Employee Login</button>
     </div>
     <div style="margin-top:20px;text-align:center;font-size:0.8rem;color:var(--gray-400)">
-      <span class="sync-status online" id="syncStatus"><i class="fas fa-wifi"></i> Synced</span>
+      <span class="sync-status online" id="syncStatusLanding"><i class="fas fa-wifi"></i> Synced</span>
+    </div>
+  </div>
+
+  <div class="login-page" id="hrLoginPage" style="display:none;">
+    <h2><i class="fas fa-user-tie"></i> HR Login</h2>
+    <div class="login-sub">Administrator Access</div>
+    <div class="login-form">
+      <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter HR password" autocomplete="off" />
+      <button class="login-btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+      <button class="btn btn-outline" id="btnBackHr" style="width:100%; justify-content:center; margin-top:10px;">Back</button>
+      <div class="login-error" id="loginErrorHr">Invalid credentials.</div>
+    </div>
+  </div>
+
+  <div class="login-page" id="empLoginPage" style="display:none;">
+    <h2><i class="fas fa-user"></i> Employee Login</h2>
+    <div class="login-sub">Self-Service Portal</div>
+    <div class="login-form">
+      <label for="empLoginId"><i class="fas fa-id-card"></i> Login ID</label>
+      <input type="text" id="empLoginId" placeholder="Enter your full name" />
+      <label for="empLoginPassword" style="margin-top:12px;"><i class="fas fa-lock"></i> Password</label>
+      <input type="password" id="empLoginPassword" placeholder="Enter your password" autocomplete="off" />
+      <button class="login-btn" id="empLoginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+      <button class="btn btn-outline" id="btnBackEmp" style="width:100%; justify-content:center; margin-top:10px;">Back</button>
+      <div class="login-error" id="loginErrorEmp">Invalid credentials.</div>
     </div>
   </div>
 
@@ -286,14 +419,14 @@ tr:hover td{background:var(--gray-50)}
       <h1><i class="fas fa-cloud"></i> Perform<span style="font-weight:300;color:var(--gray-400)">Cloud</span></h1>
       <div class="header-actions">
         <span class="sync-status online" id="syncStatusHeader"><i class="fas fa-wifi"></i> Live</span>
-        <span class="user-badge" id="roleDisplay"><i class="fas fa-user-tie"></i> HR Administrator</span>
+        <span class="user-badge" id="roleDisplay" title="Click to open settings"><i class="fas fa-user-tie"></i> HR Administrator</span>
         <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
       </div>
     </div>
 
     <div class="rating-card" id="ratingCard">
       <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-        <div><div class="label"><i class="fas fa-star"></i> Overall Performance</div><div class="score" id="finalScore">0.00</div></div>
+        <div><div class="label"><i class="fas fa-star"></i> Overall Performance</div><div class="score" id="finalScore">—</div></div>
         <div><div class="rating-label" id="finalRatingLabel">Not Rated</div><div class="stars" id="finalStars">☆☆☆☆☆</div></div>
       </div>
       <div><span class="status-badge" id="finalStatusBadge" style="background:rgba(255,255,255,0.2);color:#fff">⬜ Not started</span></div>
@@ -302,8 +435,8 @@ tr:hover td{background:var(--gray-50)}
     <div class="top-bar hr-mode" id="hrTopBar">
       <div class="tabs">
         <button class="tab active" data-tab="hr"><i class="fas fa-chart-pie"></i> Dashboard</button>
-        <button class="tab" data-tab="employees"><i class="fas fa-users"></i> Employees</button>
         <button class="tab" data-tab="all"><i class="fas fa-table"></i> All Records</button>
+        <button class="tab" data-tab="employees"><i class="fas fa-users"></i> Employees</button>
       </div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-left:auto">
         <button class="btn btn-outline btn-sm" id="exportCsvBtn"><i class="fas fa-file-csv"></i> Export</button>
@@ -325,6 +458,7 @@ tr:hover td{background:var(--gray-50)}
         <button class="btn btn-outline btn-sm" id="hrRefreshBtn"><i class="fas fa-sync"></i> Refresh</button>
       </div>
       <div class="top5-grid" id="top5Grid"></div>
+      
       <div class="filter-group" id="filterGroup">
         <button class="filter-btn active" data-level="all">All</button>
         <button class="filter-btn" data-level="Outstanding">Outstanding</button>
@@ -332,14 +466,45 @@ tr:hover td{background:var(--gray-50)}
         <button class="filter-btn" data-level="Meets Expectations">Meets</button>
         <button class="filter-btn" data-level="Needs Improvement">Needs Improvement</button>
         <button class="filter-btn" data-level="Unsatisfactory">Unsatisfactory</button>
+        <button class="filter-btn" data-level="Disputed">Disputed</button>
+        <button class="filter-btn" data-level="Recalled">Recalled</button>
+        <button class="filter-btn" data-level="Submitted">Submitted</button>
+        <button class="filter-btn" data-level="In progress">In progress</button>
+        <button class="filter-btn" data-level="Not started">Not started</button>
+        <button class="filter-btn" data-level="Approved">Approved</button>
       </div>
+
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0">
         <input id="hrSearch" class="search-input" placeholder="Search employees..." style="flex:1;min-width:160px" />
+        <select id="hrSortSelect" class="search-input" style="width:auto;min-width:180px;cursor:pointer;">
+          <option value="score-desc">Sort: Final Score (High-Low)</option>
+          <option value="name-asc">Sort: Employee Name (A-Z)</option>
+          <option value="status">Sort: Status (Disputed→Approved)</option>
+        </select>
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Employee</th><th>Department</th><th>Business Unit</th><th>Reporting</th><th>Final Score</th><th>Rating</th><th>Status</th><th>Action</th></tr></thead>
+          <thead><tr><th>Employee</th><th>Department</th><th>Company</th><th>Final Score</th><th>Rating</th><th>Status</th><th>Action</th></tr></thead>
           <tbody id="hrTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="allPane" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+        <h3 style="font-size:1rem"><i class="fas fa-table" style="color:var(--primary)"></i> All Employee Records</h3>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+        <input id="allSearch" class="search-input" placeholder="Search..." style="flex:1;min-width:160px" />
+        <select id="allSortSelect" class="search-input" style="width:auto;min-width:180px;cursor:pointer;">
+          <option value="status">Sort: Status (Disputed→Approved)</option>
+          <option value="name-asc">Sort: Employee Name (A-Z)</option>
+        </select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Employee</th><th>Department</th><th>Company</th><th>Final Score</th><th>Rating</th><th>Status</th><th>Submitted Date</th><th>Approved Date</th><th>Action</th></tr></thead>
+          <tbody id="allTableBody"></tbody>
         </table>
       </div>
     </div>
@@ -349,35 +514,174 @@ tr:hover td{background:var(--gray-50)}
         <h3 style="font-size:1rem"><i class="fas fa-users" style="color:var(--primary)"></i> Employee Management</h3>
         <button class="btn btn-primary btn-sm" id="empNew"><i class="fas fa-plus"></i> Add Employee</button>
       </div>
-      <div class="search-bar" style="margin-bottom:8px">
-        <input id="empSearch" class="search-input" placeholder="Search by name, dept, business unit..." style="flex:1;min-width:160px" />
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+        <input id="empSearch" class="search-input" placeholder="Search by name, dept, company..." style="flex:1;min-width:160px" />
+        <select id="empSortSelect" class="search-input" style="width:auto;min-width:150px;cursor:pointer;">
+          <option value="name-asc">Sort: Name (A-Z)</option>
+          <option value="name-desc">Sort: Name (Z-A)</option>
+        </select>
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Name</th><th>Department</th><th>Business Unit</th><th>Reporting</th><th>Password</th><th>Categories</th><th>Action</th></tr></thead>
+          <thead><tr><th>Name</th><th>Department</th><th>Company</th><th>Login ID</th><th>Password</th><th>Categories</th><th>Action</th></tr></thead>
           <tbody id="empListBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div id="allPane" style="display:none">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-        <h3 style="font-size:1rem"><i class="fas fa-table" style="color:var(--primary)"></i> All Employee Records</h3>
-        <input id="allSearch" class="search-input" placeholder="Search..." style="min-width:160px" />
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Employee</th><th>Department</th><th>Business Unit</th><th>Reporting</th><th>Final Score</th><th>Rating</th><th>Status</th><th>Submitted Date</th><th>Approved Date</th><th>Action</th></tr></thead>
-          <tbody id="allTableBody"></tbody>
         </table>
       </div>
     </div>
 
     <div id="stepArea"></div>
   </div>
+
+  <div id="settingsMainPage" class="sub-page">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:16px;">
+      <h2 style="font-size:1.4rem;"><i class="fas fa-cog"></i> Settings</h2>
+      <button class="btn btn-outline" id="exitSettingsBtn"><i class="fas fa-times"></i> Exit Settings</button>
+    </div>
+    <button class="settings-menu-btn" id="goToLimits">
+      <span><i class="fas fa-sliders-h" style="margin-right:10px; color:var(--primary);"></i> System Limits</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <button class="settings-menu-btn" id="goToChangePassword">
+      <span><i class="fas fa-key" style="margin-right:10px; color:var(--primary);"></i> Change HR Password</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <button class="settings-menu-btn" id="goToWeights">
+      <span><i class="fas fa-balance-scale" style="margin-right:10px; color:var(--primary);"></i> Category Weight Allocation</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <button class="settings-menu-btn" id="goToAssign">
+      <span><i class="fas fa-tags" style="margin-right:10px; color:var(--primary);"></i> Assign Categories to Employee</span>
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <div id="settingsLimitsPage" class="sub-page">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:16px;">
+      <h2 style="font-size:1.4rem;"><i class="fas fa-sliders-h"></i> System Limits</h2>
+      <button class="btn btn-outline" id="backFromLimits"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="form-group">
+      <label>Maximum Disputes allowed per employee:</label>
+      <input type="number" id="setMaxDisputes" value="1" min="0" />
+    </div>
+    <div class="form-group">
+      <label>Maximum Recalls allowed per employee:</label>
+      <input type="number" id="setMaxRecalls" value="3" min="0" />
+    </div>
+    <button class="btn btn-primary" id="saveLimitsBtn" style="margin-top:10px; width:100%;"><i class="fas fa-save"></i> Save Limits</button>
+  </div>
+
+  <div id="settingsPasswordPage" class="sub-page">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:16px;">
+      <h2 style="font-size:1.4rem;"><i class="fas fa-key"></i> Change HR Password</h2>
+      <button class="btn btn-outline" id="backFromPassword"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="form-group">
+      <label>Current Password:</label>
+      <input type="password" id="currentHrPass" placeholder="Enter current password" />
+    </div>
+    <div class="form-group">
+      <label>New Password:</label>
+      <input type="password" id="newHrPass" placeholder="Enter new password" />
+    </div>
+    <div class="form-group">
+      <label>Confirm New Password:</label>
+      <input type="password" id="confirmHrPass" placeholder="Confirm new password" />
+    </div>
+    <button class="btn btn-primary" id="saveHrPassBtn" style="margin-top:10px; width:100%;"><i class="fas fa-save"></i> Update Password</button>
+  </div>
+
+  <div id="settingsWeightsPage" class="sub-page">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:16px;">
+      <h2 style="font-size:1.4rem;"><i class="fas fa-balance-scale"></i> Category Weight Allocation</h2>
+      <button class="btn btn-outline" id="backFromWeights"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <p style="font-size: 0.85rem; color: var(--gray-500); margin-bottom: 16px;">
+      <strong>Detailed criteria and percentages.</strong> Editing a <em>parameter</em> weight auto-balances the other parameters within the same category (keeping the category total fixed). Editing a <em>category</em> weight auto-balances the other categories (keeping the grand total at 100%) and rescales that category's parameters proportionally.
+    </p>
+    <div class="table-wrap" style="overflow: visible;">
+      <table class="weight-table" id="weightTable">
+        <thead>
+          <tr>
+            <th class="col-no">No.</th>
+            <th>Performance Criteria</th>
+            <th class="col-weight">Weightage</th>
+          </tr>
+        </thead>
+        <tbody id="weightTableBody"></tbody>
+      </table>
+    </div>
+    <div class="weight-summary-bar">
+      <div>
+        <span class="hint"><i class="fas fa-info-circle"></i> Grand total must equal exactly <strong>100%</strong>.</span>
+      </div>
+      <div>
+        Current Total: <span id="grandTotalDisplay" class="total-ok">100.00%</span>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="saveCatWeightsBtn" style="margin-top:20px; width:100%;"><i class="fas fa-save"></i> Save Weights</button>
+  </div>
+
+  <div id="settingsAssignPage" class="sub-page" style="max-width: 1100px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:16px;">
+      <h2 style="font-size:1.4rem;"><i class="fas fa-tags"></i> Assign Categories to Employee</h2>
+      <button class="btn btn-outline" id="backFromAssign"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="form-group">
+      <label>Select Employee:</label>
+      <select id="assignEmpSelect" class="emp-select-box">
+        <option value="">-- Select Employee --</option>
+      </select>
+    </div>
+    <div id="assignCatContainer" style="display:none;">
+      <p style="font-size: 0.82rem; color: var(--gray-500); margin-bottom: 12px;">
+        <strong>Selection Criteria:</strong> Tick parameters to include them. Un-ticked parameters are excluded, and the remaining <em>selected</em> parameters in each category <strong>auto-rebalance</strong> to fill that category's weight. The <em>Weight</em> column shows the effective weight after balancing. Changes are saved automatically.
+      </p>
+      <div class="table-wrap" style="overflow: auto;">
+        <table class="assign-table" id="assignTable">
+          <thead>
+            <tr>
+              <th class="col-no" style="width:70px;">No.</th>
+              <th class="criteria-head">Performance Criteria</th>
+              <th class="base-head" style="width:100px;">Base Weight</th>
+              <th class="sc-head" style="width:80px;">Sel. Crit.-1</th>
+              <th class="wt-head" style="width:110px;">Weight -1</th>
+            </tr>
+          </thead>
+          <tbody id="assignTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="addEmpPage" class="sub-page" style="max-width: 1200px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:16px;">
+      <h2 style="font-size:1.4rem;"><i class="fas fa-user-plus"></i> Bulk Add Employees</h2>
+      <button class="btn btn-outline" id="backFromAddEmp"><i class="fas fa-arrow-left"></i> Back</button>
+    </div>
+    <div class="table-wrap" style="overflow: visible; margin-bottom: 20px;">
+      <table class="excel-table" id="excelAddTable">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Name</th>
+            <th style="width: 20%;">Department</th>
+            <th style="width: 20%;">Company</th>
+            <th style="width: 15%;">Login ID (Auto)</th>
+            <th style="width: 15%;">Password (Auto)</th>
+            <th style="width: 5%; text-align: center;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="excelAddBody"></tbody>
+      </table>
+    </div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-outline" id="addRowBtn" style="flex:1;"><i class="fas fa-plus"></i> Add Row</button>
+      <button class="btn btn-primary" id="saveNewEmpsBtn" style="flex:1;"><i class="fas fa-save"></i> Save Entries</button>
+    </div>
+  </div>
+
 </div>
 
-<!-- Toast Notification -->
 <div class="toast" id="toast"><span id="toastMessage"></span></div>
 
 <script>
@@ -395,19 +699,43 @@ tr:hover td{background:var(--gray-50)}
     measurementId: "G-PTEQGZM2C8"
   };
 
-  // ⚠️ CHANGE THIS to your preferred HR password
-  const HR_PASSWORD = 'admin123';
+  let hrPassword = 'admin123';
+  let systemSettings = { maxDisputes: 1, maxRecalls: 3 };
 
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database();
-  const analytics = firebase.analytics();
-
-  const CATEGORIES = [
-    { name:'Job Knowledge & Task Management', weight:30, params:['Task Completion','Job Knowledge & Technical Skills','Quality of Work','Problem-Solving','Learning New Skills']},
-    { name:'Work Ethic & Productivity', weight:23, params:['Work Consistency','Attendance & Punctuality','Time Management','Productivity','Adaptability']},
-    { name:'Interpersonal & Leadership', weight:22, params:['Teamwork & Cooperation','Communication Skills','Initiative & Responsibility','Leadership','Conflict Resolution']},
-    { name:'Innovation & Development', weight:16, params:['Initiative & Creativity','Learning & Self-Development','Process Improvement','Business Contribution']},
-    { name:'Customer & Result Orientation', weight:9, params:['Customer / Client Handling','Target Achievement','Result Focus & Ownership','Positive Relationships']}
+  let CATEGORIES = [
+    { name:'Job Knowledge & Task Management', weight:30, params:[
+        {name:'Task Completion', weight:6},
+        {name:'Job Knowledge & Technical Skills', weight:6},
+        {name:'Quality of Work', weight:6},
+        {name:'Problem-Solving', weight:6},
+        {name:'Learning New Skills', weight:6}
+      ]},
+    { name:'Work Ethic & Productivity', weight:25, params:[
+        {name:'Work Consistency', weight:5},
+        {name:'Attendance & Punctuality', weight:5},
+        {name:'Time Management', weight:5},
+        {name:'Productivity', weight:5},
+        {name:'Adaptability', weight:5}
+      ]},
+    { name:'Interpersonal & Leadership', weight:20, params:[
+        {name:'Teamwork & Cooperation', weight:4},
+        {name:'Communication Skills', weight:4},
+        {name:'Initiative & Responsibility', weight:4},
+        {name:'Leadership', weight:4},
+        {name:'Conflict Resolution', weight:4}
+      ]},
+    { name:'Innovation & Development', weight:16, params:[
+        {name:'Initiative & Creativity', weight:4},
+        {name:'Learning & Self-Development', weight:4},
+        {name:'Process Improvement', weight:4},
+        {name:'Business Contribution', weight:4}
+      ]},
+    { name:'Customer & Result Orientation', weight:9, params:[
+        {name:'Customer / Client Handling', weight:2.25},
+        {name:'Target Achievement', weight:2.25},
+        {name:'Result Focus & Ownership', weight:2.25},
+        {name:'Positive Relationships', weight:2.25}
+      ]}
   ];
 
   const RATING_LABELS = {1:'Unsatisfactory',2:'Needs Improvement',3:'Meets Expectations',4:'Exceeds Expectations',5:'Outstanding'};
@@ -439,10 +767,13 @@ tr:hover td{background:var(--gray-50)}
     'Positive Relationships':{1:'Poor relationships.',2:'Needs improvement.',3:'Good professional relationships.',4:'Builds strong relationships.',5:'Excellent long-term relationships.'}
   };
 
-  const totalParams = CATEGORIES.reduce((s,c)=>s+c.params.length,0);
-  const totalWeight = CATEGORIES.reduce((s,c)=>s+c.weight,0);
+  function totalParamsCount(){ return CATEGORIES.reduce((s,c)=>s+c.params.length,0); }
+  function buildParamOffsets(){ const offsets=[]; let acc=0; CATEGORIES.forEach(cat=>{ offsets.push(acc); acc+=cat.params.length; }); return offsets; }
 
-  let currentUser = 'hr';
+  let PARAM_OFFSETS = buildParamOffsets();
+  let totalParams = totalParamsCount();
+
+  let currentUser = 'none';
   let currentStep = 0;
   let currentFilter = 'all';
   let currentSelectedEmp = null;
@@ -460,26 +791,55 @@ tr:hover td{background:var(--gray-50)}
   let localApproved = {};
   let localSubmissionDates = {};
   let localApprovalDates = {};
+  let localDisputes = {};
+  let localRecallRequests = {};
+  let localDisputeCounts = {};
+  let localRecallCounts = {};
+  let localCleared = {};
+  let localRecalled = {};
+  let localAssignSelection = {};
 
-  function genPassword(){
-    return String(Math.floor(100000 + Math.random() * 900000));
+  let excelRowCounter = 0;
+
+  function genPassword(fullName) {
+    if(!fullName) return String(Math.floor(100000 + Math.random() * 900000));
+    const parts = fullName.trim().split(/\s+/);
+    let prefix = '';
+    if(parts.length === 1) { prefix = parts[0].charAt(0).toUpperCase(); }
+    else { prefix = parts[0].charAt(0).toUpperCase() + parts[1].charAt(0).toUpperCase(); }
+    const digits = Math.floor(1000 + Math.random() * 9000);
+    return prefix + digits;
+  }
+
+  function generateLoginId(fullName) {
+    if(!fullName) return '';
+    const parts = fullName.trim().split(/\s+/);
+    if(parts.length === 1) { return parts[0].toUpperCase(); }
+    return parts[0].toUpperCase() + '.' + parts[1].toUpperCase();
   }
 
   function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
-    const msgEl = document.getElementById('toastMessage');
-    msgEl.textContent = message;
+    document.getElementById('toastMessage').textContent = message;
     toast.className = 'toast show ' + type;
     setTimeout(() => { toast.className = 'toast'; }, 3000);
   }
 
   function syncToCloud() {
-    const data = { employees: localEmployees, ratings: localRatings, completion: localCompletion, submitted: localSubmitted, assigned: localAssigned, hrRatings: localHrRatings, approved: localApproved, submissionDates: localSubmissionDates, approvalDates: localApprovalDates };
+    const data = {
+      employees: localEmployees, ratings: localRatings, completion: localCompletion,
+      submitted: localSubmitted, assigned: localAssigned, hrRatings: localHrRatings,
+      approved: localApproved, submissionDates: localSubmissionDates, approvalDates: localApprovalDates,
+      disputes: localDisputes, recallRequests: localRecallRequests, disputeCounts: localDisputeCounts,
+      recallCounts: localRecallCounts, cleared: localCleared, recalled: localRecalled,
+      assignSelection: localAssignSelection, hrPassword: hrPassword, settings: systemSettings, categories: CATEGORIES
+    };
     database.ref('appraisal').set(data).then(() => updateSyncStatus(true)).catch(() => updateSyncStatus(false));
   }
 
   function updateSyncStatus(online) {
-    document.querySelectorAll('#syncStatus, #syncStatusHeader').forEach(el => {
+    document.querySelectorAll('#syncStatusLanding, #syncStatusHeader').forEach(el => {
+      if(!el) return;
       el.className = 'sync-status ' + (online ? 'online' : 'offline');
       el.innerHTML = online ? '<i class="fas fa-wifi"></i> Live' : '<i class="fas fa-exclamation-triangle"></i> Offline';
     });
@@ -498,10 +858,24 @@ tr:hover td{background:var(--gray-50)}
         localApproved = data.approved || {};
         localSubmissionDates = data.submissionDates || {};
         localApprovalDates = data.approvalDates || {};
+        localDisputes = data.disputes || {};
+        localRecallRequests = data.recallRequests || {};
+        localDisputeCounts = data.disputeCounts || {};
+        localRecallCounts = data.recallCounts || {};
+        localCleared = data.cleared || {};
+        localRecalled = data.recalled || {};
+        localAssignSelection = data.assignSelection || {};
+        if(data.hrPassword) hrPassword = data.hrPassword;
+        if(data.settings) systemSettings = data.settings;
+        if(data.categories) {
+          CATEGORIES = data.categories;
+          PARAM_OFFSETS = buildParamOffsets();
+          totalParams = totalParamsCount();
+        }
         if (currentUser === 'hr') { renderTop5(); renderHRTable(); renderEmployeeList(); renderAllTable(); }
         else if (currentUser !== 'hr' && currentViewingEmp) {
           const empId = currentViewingEmp;
-          if (localSubmitted[empId] || localApproved[empId]) { renderSubmittedSummary(empId, true); }
+          if (localSubmitted[empId] || localApproved[empId] || hasDispute(empId) || hasRecallRequest(empId)) { renderSubmittedSummary(empId, true); }
           else { const assigned = localAssigned[empId] || []; const first = assigned.length ? assigned[0] : 0; renderStep(empId, first, true); }
           updateTopCard(empId);
         }
@@ -518,52 +892,58 @@ tr:hover td{background:var(--gray-50)}
     return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
   }
 
-  function computeFinal(empId, useHrRatings = false){
-    const ratings = useHrRatings && localHrRatings[empId] ? localHrRatings[empId] : localRatings[empId] || Array(totalParams).fill(0);
-    const assigned = localAssigned[empId] || [];
-    let idx=0, included=[];
-    CATEGORIES.forEach((cat,ci)=>{ if(assigned.includes(ci)) included.push(ci); idx += cat.params.length; });
-    if(included.length===0) return {score:0, usedCategories:[], details:[]};
-    const sumWeights = included.reduce((s,ci)=>s+CATEGORIES[ci].weight,0);
-    idx=0; let total=0; const details=[];
-    CATEGORIES.forEach((cat,ci)=>{
-      const vals=[]; for(let i=0;i<cat.params.length;i++){ vals.push(ratings[idx+i]||0); }
-      const rated=vals.filter(v=>v>0);
-      const catAvg=rated.length ? (rated.reduce((a,b)=>a+b,0)/rated.length) : 0;
-      let contrib=0;
-      if(included.includes(ci)){ const w=cat.weight/sumWeights; contrib=catAvg*w; }
-      details.push({cat:cat.name, avg:+catAvg.toFixed(2), contrib:+contrib.toFixed(2), params: cat.params.map((p,pi) => ({name:p, rating: ratings[idx+pi]||0}))});
-      total += contrib; idx += cat.params.length;
-    });
-    return { score:+total.toFixed(2), usedCategories:included, details };
+  function hasDispute(empId) {
+    const d = localDisputes[empId];
+    if(!d) return false;
+    return Object.keys(d).length > 0;
   }
 
-  function computeFinalWithHr(empId){
+  function hasRecallRequest(empId) { return !!localRecallRequests[empId]; }
+
+  function computeFinal(empId){
     const empRatings = localRatings[empId] || Array(totalParams).fill(0);
     const hrRatings = localHrRatings[empId] || Array(totalParams).fill(0);
     const combined = empRatings.map((v,i) => hrRatings[i] > 0 ? hrRatings[i] : v);
     const assigned = localAssigned[empId] || [];
-    let idx=0, included=[];
-    CATEGORIES.forEach((cat,ci)=>{ if(assigned.includes(ci)) included.push(ci); idx += cat.params.length; });
-    if(included.length===0) return {score:0, usedCategories:[], details:[], combinedRatings: combined};
-    const sumWeights = included.reduce((s,ci)=>s+CATEGORIES[ci].weight,0);
-    idx=0; let total=0; const details=[];
-    CATEGORIES.forEach((cat,ci)=>{
-      const vals=[]; const hrVals=[]; const empVals=[];
-      for(let i=0;i<cat.params.length;i++){ 
-        vals.push(combined[idx+i]||0); 
-        hrVals.push(hrRatings[idx+i]||0);
-        empVals.push(empRatings[idx+i]||0);
-      }
-      const rated=vals.filter(v=>v>0);
-      const catAvg=rated.length ? (rated.reduce((a,b)=>a+b,0)/rated.length) : 0;
-      let contrib=0;
-      if(included.includes(ci)){ const w=cat.weight/sumWeights; contrib=catAvg*w; }
-      details.push({cat:cat.name, avg:+catAvg.toFixed(2), contrib:+contrib.toFixed(2), 
-        params: cat.params.map((p,pi) => ({name:p, empRating: empVals[pi]||0, hrRating: hrVals[pi]||0, finalRating: vals[pi]||0}))});
-      total += contrib; idx += cat.params.length;
+    if(assigned.length === 0) return {score:0, usedCategories:[], details:[], combinedRatings: combined, totalActiveWeight: 0};
+
+    const details = [];
+    let totalWeightedScore = 0;
+    let totalActiveWeight = 0;
+
+    CATEGORIES.forEach((cat, ci) => {
+      const base = PARAM_OFFSETS[ci];
+      const isAssigned = assigned.includes(ci);
+      let catWeightedScore = 0;
+      let catRatingSum = 0;
+      let catRatedCount = 0;
+
+      const paramDetails = cat.params.map((p, pi) => {
+        const gIdx = base + pi;
+        const finalR = combined[gIdx] || 0;
+        const empR = empRatings[gIdx] || 0;
+        const hrR = hrRatings[gIdx] || 0;
+        return {name: p.name, weight: p.weight, empRating: empR, hrRating: hrR, finalRating: finalR};
+      });
+
+      paramDetails.forEach(pd => {
+        if(pd.finalRating > 0 && isAssigned){
+          const pts = (pd.finalRating / 5) * pd.weight;
+          catWeightedScore += pts;
+          catRatingSum += pd.finalRating;
+          catRatedCount++;
+          totalWeightedScore += pts;
+          totalActiveWeight += pd.weight;
+        }
+      });
+
+      const catAvg = catRatedCount > 0 ? (catRatingSum / catRatedCount) : 0;
+      details.push({ cat: cat.name, avg: +catAvg.toFixed(2), contrib: +catWeightedScore.toFixed(2), params: paramDetails });
     });
-    return { score:+total.toFixed(2), usedCategories:included, details };
+
+    let score = 0;
+    if(totalActiveWeight > 0){ score = (totalWeightedScore / totalActiveWeight) * 5; }
+    return { score: +score.toFixed(2), usedCategories: assigned, details, combinedRatings: combined, totalActiveWeight };
   }
 
   function overallLabel(score){
@@ -585,34 +965,74 @@ tr:hover td{background:var(--gray-50)}
     let s=''; for(let i=0;i<full;i++) s+='★'; if(half) s+='½'; for(let i=full+half;i<5;i++) s+='☆'; return s;
   }
 
-  const loginPage=document.getElementById('loginPage');
-  const loginSelect=document.getElementById('loginSelect');
-  const loginPassword=document.getElementById('loginPassword');
-  const loginBtn=document.getElementById('loginBtn');
-  const loginError=document.getElementById('loginError');
-  const appContainer=document.getElementById('appContainer');
-  const roleDisplay=document.getElementById('roleDisplay');
-  const logoutBtn=document.getElementById('logoutBtn');
-  const ratingCard=document.getElementById('ratingCard');
-  const finalScore=document.getElementById('finalScore');
-  const finalRatingLabel=document.getElementById('finalRatingLabel');
-  const finalStars=document.getElementById('finalStars');
-  const finalStatusBadge=document.getElementById('finalStatusBadge');
-  const top5Grid=document.getElementById('top5Grid');
-  const hrTableBody=document.getElementById('hrTableBody');
-  const empListBody=document.getElementById('empListBody');
-  const allTableBody=document.getElementById('allTableBody');
-  const stepArea=document.getElementById('stepArea');
-  const hrSearch=document.getElementById('hrSearch');
-  const empSearch=document.getElementById('empSearch');
-  const allSearch=document.getElementById('allSearch');
-  const empNew=document.getElementById('empNew');
-  const hrRefreshBtn=document.getElementById('hrRefreshBtn');
-  const exportCsvBtn=document.getElementById('exportCsvBtn');
-  const hrTopBar=document.getElementById('hrTopBar');
-  const hrPane=document.getElementById('hrPane');
-  const employeesPane=document.getElementById('employeesPane');
-  const allPane=document.getElementById('allPane');
+  const landingPage = document.getElementById('landingPage');
+  const hrLoginPage = document.getElementById('hrLoginPage');
+  const empLoginPage = document.getElementById('empLoginPage');
+  const appContainer = document.getElementById('appContainer');
+  const loginPassword = document.getElementById('loginPassword');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginErrorHr = document.getElementById('loginErrorHr');
+  const btnBackHr = document.getElementById('btnBackHr');
+  const empLoginId = document.getElementById('empLoginId');
+  const empLoginPassword = document.getElementById('empLoginPassword');
+  const empLoginBtn = document.getElementById('empLoginBtn');
+  const loginErrorEmp = document.getElementById('loginErrorEmp');
+  const btnBackEmp = document.getElementById('btnBackEmp');
+  const roleDisplay = document.getElementById('roleDisplay');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const ratingCard = document.getElementById('ratingCard');
+  const finalScore = document.getElementById('finalScore');
+  const finalRatingLabel = document.getElementById('finalRatingLabel');
+  const finalStars = document.getElementById('finalStars');
+  const finalStatusBadge = document.getElementById('finalStatusBadge');
+  const top5Grid = document.getElementById('top5Grid');
+  const hrTableBody = document.getElementById('hrTableBody');
+  const empListBody = document.getElementById('empListBody');
+  const allTableBody = document.getElementById('allTableBody');
+  const stepArea = document.getElementById('stepArea');
+  const hrSearch = document.getElementById('hrSearch');
+  const empSearch = document.getElementById('empSearch');
+  const allSearch = document.getElementById('allSearch');
+  const hrSortSelect = document.getElementById('hrSortSelect');
+  const empSortSelect = document.getElementById('empSortSelect');
+  const allSortSelect = document.getElementById('allSortSelect');
+  const empNew = document.getElementById('empNew');
+  const hrRefreshBtn = document.getElementById('hrRefreshBtn');
+  const exportCsvBtn = document.getElementById('exportCsvBtn');
+  const hrTopBar = document.getElementById('hrTopBar');
+  const hrPane = document.getElementById('hrPane');
+  const employeesPane = document.getElementById('employeesPane');
+  const allPane = document.getElementById('allPane');
+  const settingsMainPage = document.getElementById('settingsMainPage');
+  const settingsLimitsPage = document.getElementById('settingsLimitsPage');
+  const settingsPasswordPage = document.getElementById('settingsPasswordPage');
+  const settingsWeightsPage = document.getElementById('settingsWeightsPage');
+  const settingsAssignPage = document.getElementById('settingsAssignPage');
+  const addEmpPage = document.getElementById('addEmpPage');
+  const setMaxDisputes = document.getElementById('setMaxDisputes');
+  const setMaxRecalls = document.getElementById('setMaxRecalls');
+  const saveLimitsBtn = document.getElementById('saveLimitsBtn');
+  const backFromLimits = document.getElementById('backFromLimits');
+  const currentHrPass = document.getElementById('currentHrPass');
+  const newHrPass = document.getElementById('newHrPass');
+  const confirmHrPass = document.getElementById('confirmHrPass');
+  const saveHrPassBtn = document.getElementById('saveHrPassBtn');
+  const backFromPassword = document.getElementById('backFromPassword');
+  const saveCatWeightsBtn = document.getElementById('saveCatWeightsBtn');
+  const backFromWeights = document.getElementById('backFromWeights');
+  const assignEmpSelect = document.getElementById('assignEmpSelect');
+  const assignCatContainer = document.getElementById('assignCatContainer');
+  const assignTableBody = document.getElementById('assignTableBody');
+  const backFromAssign = document.getElementById('backFromAssign');
+  const exitSettingsBtn = document.getElementById('exitSettingsBtn');
+  const excelAddBody = document.getElementById('excelAddBody');
+  const addRowBtn = document.getElementById('addRowBtn');
+  const saveNewEmpsBtn = document.getElementById('saveNewEmpsBtn');
+  const backFromAddEmp = document.getElementById('backFromAddEmp');
+  const weightTableBody = document.getElementById('weightTableBody');
+  const grandTotalDisplay = document.getElementById('grandTotalDisplay');
+
+  let assignCurrentEmpId = null;
 
   function getProgress(empId){
     const assigned = localAssigned[empId] || [];
@@ -632,23 +1052,55 @@ tr:hover td{background:var(--gray-50)}
     return done;
   }
 
+  function getFilterStatus(empId) {
+    if(hasDispute(empId)) return 'Disputed';
+    if(hasRecallRequest(empId)) return 'Recall Requested';
+    if(localRecalled[empId]) return 'Recalled';
+    if(localApproved[empId]) return 'Approved';
+    if(localSubmitted[empId]) return 'Submitted';
+    const comp = localCompletion[empId] || [];
+    if(comp.some(v=>v)) {
+       const progress = getProgress(empId);
+       const completedCount = getCompletedCount(empId);
+       const assignedCount = (localAssigned[empId] || []).length;
+       if(progress === 100 && completedCount === assignedCount) return 'Completed';
+       return 'In progress';
+    }
+    return 'Not started';
+  }
+
+  function getStatusPriority(status) {
+    switch(status) {
+      case 'Disputed': return 1;
+      case 'Recall Requested': return 2;
+      case 'Recalled': return 3;
+      case 'Submitted': return 4;
+      case 'In progress': return 5;
+      case 'Completed': return 6;
+      case 'Not started': return 7;
+      case 'Approved': return 8;
+      default: return 9;
+    }
+  }
+
   function updateTopCard(empId){
     const res = computeFinal(empId);
-    finalScore.textContent = res.score ? res.score.toFixed(2) : '0.00';
-    finalRatingLabel.textContent = res.score ? overallLabel(res.score) : 'Not Rated';
-    finalStars.textContent = res.score ? getStars(res.score) : '☆☆☆☆☆';
-    const comp = localCompletion[empId] || [];
-    const progress = getProgress(empId);
-    const completedCount = getCompletedCount(empId);
-    const assignedCount = (localAssigned[empId] || []).length;
+    const hasAnyRating = res.totalActiveWeight > 0 && res.score > 0;
+    finalScore.textContent = hasAnyRating ? res.score.toFixed(2) : '—';
+    finalRatingLabel.textContent = hasAnyRating ? overallLabel(res.score) : 'Not Rated';
+    finalStars.textContent = hasAnyRating ? getStars(res.score) : '☆☆☆☆☆';
+    const status = getFilterStatus(empId);
+
     let statusText = '⬜ Not started';
     let statusBg = 'rgba(255,255,255,0.15)';
-    if(localApproved[empId]) { statusText = '✅ Approved'; statusBg = 'rgba(16,185,129,0.3)'; }
-    else if(localSubmitted[empId]) { statusText = '✅ Submitted'; statusBg = 'rgba(16,185,129,0.3)'; }
-    else if(comp.some(v=>v)) { 
-      if(progress === 100 && completedCount === assignedCount) { statusText = '✅ Completed'; statusBg = 'rgba(16,185,129,0.3)'; }
-      else { statusText = `⏳ In progress (${progress}%)`; statusBg = 'rgba(245,158,11,0.3)'; }
-    }
+    if(status === 'Disputed') { statusText = '⚠️ Disputed'; statusBg = 'rgba(239,68,68,0.4)'; }
+    else if(status === 'Recall Requested') { statusText = '🔄 Recall Req'; statusBg = 'rgba(245,158,11,0.4)'; }
+    else if(status === 'Recalled') { statusText = '↩️ Recalled'; statusBg = 'rgba(99,102,241,0.4)'; }
+    else if(status === 'Approved') { statusText = '✅ Approved'; statusBg = 'rgba(16,185,129,0.3)'; }
+    else if(status === 'Submitted') { statusText = '✅ Submitted'; statusBg = 'rgba(16,185,129,0.3)'; }
+    else if(status === 'Completed') { statusText = '✅ Completed'; statusBg = 'rgba(16,185,129,0.3)'; }
+    else if(status === 'In progress') { statusText = '⏳ In progress (' + getProgress(empId) + '%)'; statusBg = 'rgba(245,158,11,0.3)'; }
+
     finalStatusBadge.textContent = statusText;
     finalStatusBadge.style.background = statusBg;
   }
@@ -668,49 +1120,68 @@ tr:hover td{background:var(--gray-50)}
       const cls = getRatingClass(emp.label);
       const div = document.createElement('div');
       div.className = 'top5-card';
-      div.innerHTML = `<div class="rank">#${idx+1}</div><div class="name">${esc(emp.name)}</div><div class="score">${getStars(emp.score)}</div><div class="rating-badge ${cls}">${emp.label}</div>`;
+      div.innerHTML = '<div class="rank">#' + (idx+1) + '</div><div class="name">' + esc(emp.displayName || emp.name) + '</div><div class="score">' + getStars(emp.score) + '</div><div class="rating-badge ' + cls + '">' + emp.label + '</div>';
       top5Grid.appendChild(div);
     });
   }
 
   function getStatusBadge(empId){
-    const progress = getProgress(empId);
-    const completedCount = getCompletedCount(empId);
-    const assignedCount = (localAssigned[empId] || []).length;
-    if(localApproved[empId]) return '<span class="status-badge approved">✅ Approved</span>';
-    if(localSubmitted[empId]) return '<span class="status-badge submitted">✅ Submitted</span>';
-    if(localCompletion[empId] && localCompletion[empId].some(v=>v)) {
-      if(progress === 100 && completedCount === assignedCount && assignedCount > 0) return '<span class="status-badge approved">✅ Completed</span>';
-      return `<span class="status-badge pending">⏳ In progress (${progress}%)</span>`;
-    }
+    const status = getFilterStatus(empId);
+    if(status === 'Disputed') return '<span class="status-badge disputed">⚠️ Disputed</span>';
+    if(status === 'Recall Requested') return '<span class="status-badge recalled">🔄 Recall Req</span>';
+    if(status === 'Recalled') return '<span class="status-badge recalled">↩️ Recalled</span>';
+    if(status === 'Approved') return '<span class="status-badge approved">✅ Approved</span>';
+    if(status === 'Submitted') return '<span class="status-badge submitted">✅ Submitted</span>';
+    if(status === 'Completed') return '<span class="status-badge approved">✅ Completed</span>';
+    if(status === 'In progress') return '<span class="status-badge pending">⏳ In progress (' + getProgress(empId) + '%)</span>';
     return '<span class="status-badge pending">⬜ Not started</span>';
   }
 
   function renderHRTable(){
     const q = hrSearch.value.trim().toLowerCase();
+    const sort = hrSortSelect.value;
     hrTableBody.innerHTML = '';
-    const rows = [];
+    let rows = [];
+
     localEmployees.forEach(emp => {
       const res = computeFinal(emp.id);
       const label = overallLabel(res.score);
-      if(currentFilter !== 'all' && label !== currentFilter) return;
-      if(q){ const hay = (emp.name + ' ' + emp.department + ' ' + emp.businessUnit + ' ' + emp.reporting).toLowerCase(); if(!hay.includes(q)) return; }
+      const status = getFilterStatus(emp.id);
+
+      if(currentFilter !== 'all') {
+         const ratingFilters = ['Outstanding', 'Exceeds Expectations', 'Meets Expectations', 'Needs Improvement', 'Unsatisfactory'];
+         const statusFilters = ['Approved', 'Disputed', 'Submitted', 'In progress', 'Not started', 'Completed', 'Recalled'];
+         if (ratingFilters.includes(currentFilter)) {
+            if (label !== currentFilter) return;
+         } else if (statusFilters.includes(currentFilter)) {
+            if (status !== currentFilter && !(currentFilter === 'In progress' && status === 'Completed')) return;
+         }
+      }
+
+      if(q){ const hay = (emp.name + ' ' + emp.department + ' ' + emp.businessUnit).toLowerCase(); if(!hay.includes(q)) return; }
       const cls = getRatingClass(label);
       const statusHtml = getStatusBadge(emp.id);
-      const isSubmitted = localSubmitted[emp.id] || localApproved[emp.id];
-      rows.push({emp, res, label, cls, statusHtml, isSubmitted});
+      const isSubmitted = localSubmitted[emp.id] || localApproved[emp.id] || hasDispute(emp.id) || hasRecallRequest(emp.id) || localRecalled[emp.id];
+      rows.push({emp, res, label, cls, statusHtml, isSubmitted, status});
     });
-    rows.sort((a,b) => b.res.score - a.res.score);
+
+    rows.sort((a, b) => {
+      if (sort === 'score-desc') return b.res.score - a.res.score;
+      if (sort === 'name-asc') return a.emp.name.localeCompare(b.emp.name);
+      if (sort === 'status') return getStatusPriority(a.status) - getStatusPriority(b.status);
+      return 0;
+    });
+
     rows.forEach(({emp, res, label, cls, statusHtml, isSubmitted}) => {
       const tr = document.createElement('tr');
-      const actionHtml = isSubmitted ? `<button class="btn btn-primary btn-sm view-btn" data-id="${emp.id}">View</button>` : '';
+      const hasScore = res.totalActiveWeight > 0 && res.score > 0;
+      const actionHtml = isSubmitted ? '<button class="btn btn-primary btn-sm view-btn" data-id="' + emp.id + '">View</button>' : '';
       tr.innerHTML = `
-        <td><strong>${esc(emp.name)}</strong></td>
+        <td><strong>${esc(emp.displayName || emp.name)}</strong></td>
         <td>${esc(emp.department)}</td>
         <td>${esc(emp.businessUnit)}</td>
-        <td>${esc(emp.reporting)}</td>
-        <td>${res.score ? getStars(res.score) : '—'}</td>
-        <td><span class="rating-badge ${cls}">${res.score ? esc(label) : '—'}</span></td>
+        <td>${hasScore ? getStars(res.score) : '—'}</td>
+        <td><span class="rating-badge ${cls}">${hasScore ? esc(label) : '—'}</span></td>
         <td>${statusHtml}</td>
         <td>${actionHtml}</td>
       `;
@@ -720,18 +1191,28 @@ tr:hover td{background:var(--gray-50)}
 
   function renderEmployeeList(){
     const q = empSearch.value.trim().toLowerCase();
-    empListBody.innerHTML = '';
+    const sort = empSortSelect.value;
+    let rows = [];
     localEmployees.forEach(emp => {
-      if(q){ const hay = (emp.name + ' ' + emp.department + ' ' + emp.businessUnit + ' ' + emp.reporting).toLowerCase(); if(!hay.includes(q)) return; }
+      if(q){ const hay = (emp.name + ' ' + emp.department + ' ' + emp.businessUnit).toLowerCase(); if(!hay.includes(q)) return; }
+      rows.push(emp);
+    });
+    rows.sort((a, b) => {
+      if (sort === 'name-asc') return a.name.localeCompare(b.name);
+      if (sort === 'name-desc') return b.name.localeCompare(a.name);
+      return 0;
+    });
+    empListBody.innerHTML = '';
+    rows.forEach(emp => {
       const assigned = localAssigned[emp.id] || [];
       const isEditing = editingEmpId === emp.id;
       const tr = document.createElement('tr');
       if(isEditing){
         tr.innerHTML = `
-          <td><input class="emp-edit-input" id="editName_${emp.id}" value="${esc(emp.name)}" /></td>
+          <td><input class="emp-edit-input" id="editName_${emp.id}" value="${esc(emp.displayName || emp.name)}" /></td>
           <td><input class="emp-edit-input" id="editDept_${emp.id}" value="${esc(emp.department)}" /></td>
           <td><input class="emp-edit-input" id="editBU_${emp.id}" value="${esc(emp.businessUnit)}" /></td>
-          <td><input class="emp-edit-input" id="editRep_${emp.id}" value="${esc(emp.reporting)}" /></td>
+          <td><span class="pass-code" style="opacity:0.6;" title="Auto-updates with Name">${esc(emp.name)}</span></td>
           <td>
             <div style="display:flex;gap:4px;align-items:center;">
               <input class="emp-edit-input" id="editPass_${emp.id}" value="${esc(emp.password || '')}" style="min-width:90px;font-family:monospace;" />
@@ -743,23 +1224,21 @@ tr:hover td{background:var(--gray-50)}
             <div class="employee-actions">
               <button class="btn btn-success btn-xs save-edit-btn" data-id="${emp.id}"><i class="fas fa-check"></i></button>
               <button class="btn btn-outline btn-xs cancel-edit-btn" data-id="${emp.id}"><i class="fas fa-times"></i></button>
-              <button class="btn btn-primary btn-xs assign-cat-btn" data-id="${emp.id}"><i class="fas fa-tags"></i></button>
             </div>
           </td>
         `;
       } else {
         tr.innerHTML = `
-          <td><strong>${esc(emp.name)}</strong></td>
+          <td><strong>${esc(emp.displayName || emp.name)}</strong></td>
           <td>${esc(emp.department)}</td>
           <td>${esc(emp.businessUnit)}</td>
-          <td>${esc(emp.reporting)}</td>
+          <td><span class="pass-code" style="background:#e0e7ff; color:#3730a3;">${esc(emp.name)}</span></td>
           <td><span class="pass-code">${esc(emp.password || '—')}</span></td>
-          <td><span class="status-badge ${assigned.length === CATEGORIES.length ? 'submitted' : 'progress'}">${assigned.length}/${CATEGORIES.length}</span></td>
+          <td><span class="status-badge ${assigned.length === CATEGORIES.length ? 'submitted' : 'pending'}">${assigned.length}/${CATEGORIES.length}</span></td>
           <td>
             <div class="employee-actions">
               <button class="btn btn-outline btn-xs edit-emp-btn" data-id="${emp.id}"><i class="fas fa-edit"></i></button>
               <button class="btn btn-danger btn-xs delete-emp-btn" data-id="${emp.id}"><i class="fas fa-trash"></i></button>
-              <button class="btn btn-primary btn-xs assign-cat-btn" data-id="${emp.id}"><i class="fas fa-tags"></i></button>
             </div>
           </td>
         `;
@@ -770,33 +1249,51 @@ tr:hover td{background:var(--gray-50)}
 
   function renderAllTable(){
     const q = allSearch.value.trim().toLowerCase();
-    allTableBody.innerHTML = '';
+    const sort = allSortSelect.value;
+    let rows = [];
     localEmployees.forEach(emp => {
-      if(q){ const hay = (emp.name + ' ' + emp.department + ' ' + emp.businessUnit + ' ' + emp.reporting).toLowerCase(); if(!hay.includes(q)) return; }
-      const res = computeFinalWithHr(emp.id);
+      if(q){ const hay = (emp.name + ' ' + emp.department + ' ' + emp.businessUnit).toLowerCase(); if(!hay.includes(q)) return; }
+      const res = computeFinal(emp.id);
       const label = overallLabel(res.score);
+      const status = getFilterStatus(emp.id);
+      rows.push({emp, res, label, status});
+    });
+    rows.sort((a, b) => {
+      if (sort === 'status') return getStatusPriority(a.status) - getStatusPriority(b.status);
+      if (sort === 'name-asc') return a.emp.name.localeCompare(b.emp.name);
+      return 0;
+    });
+    allTableBody.innerHTML = '';
+    rows.forEach(({emp, res, label, status}) => {
       const cls = getRatingClass(label);
       const statusHtml = getStatusBadge(emp.id);
       const isSubmitted = localSubmitted[emp.id];
       const isApproved = localApproved[emp.id];
+      const isDisputed = hasDispute(emp.id);
+      const isRecall = hasRecallRequest(emp.id);
+      const isRecalled = localRecalled[emp.id];
+      const hasScore = res.totalActiveWeight > 0 && res.score > 0;
       const subDate = localSubmissionDates[emp.id] ? formatDate(localSubmissionDates[emp.id]) : '—';
       const appDate = localApprovalDates[emp.id] ? formatDate(localApprovalDates[emp.id]) : '—';
       const tr = document.createElement('tr');
+
       let actionHtml = '';
-      if(isApproved) { actionHtml = '<span style="font-size:0.7rem;color:var(--success)">✅ Approved</span>'; }
-      else if(isSubmitted) {
-        actionHtml = `
-          <button class="btn btn-primary btn-sm view-btn" data-id="${emp.id}"><i class="fas fa-eye"></i> View</button>
-          <button class="btn btn-success btn-sm approve-btn" data-id="${emp.id}"><i class="fas fa-check"></i> Approve</button>
-        `;
-      } else { actionHtml = '<span style="font-size:0.7rem;color:var(--gray-400)">Not submitted</span>'; }
+      if(isDisputed || isApproved || isRecall || isRecalled) {
+        actionHtml = '<button class="btn btn-primary btn-sm view-btn" data-id="' + emp.id + '"><i class="fas fa-eye"></i> View</button>';
+      } else if(isSubmitted) {
+        actionHtml = '<button class="btn btn-primary btn-sm view-btn" data-id="' + emp.id + '"><i class="fas fa-eye"></i> View</button>' +
+                     '<button class="btn btn-success btn-sm approve-btn" data-id="' + emp.id + '"><i class="fas fa-check"></i> Approve</button>';
+      } else {
+        actionHtml = '<span style="font-size:0.7rem;color:var(--gray-400)">Not submitted</span>';
+      }
+      actionHtml += ' <button class="btn btn-danger btn-sm clear-data-btn" data-id="' + emp.id + '" title="Clear all data for this employee"><i class="fas fa-eraser"></i> Clear</button>';
+
       tr.innerHTML = `
-        <td><strong>${esc(emp.name)}</strong></td>
+        <td><strong>${esc(emp.displayName || emp.name)}</strong></td>
         <td>${esc(emp.department)}</td>
         <td>${esc(emp.businessUnit)}</td>
-        <td>${esc(emp.reporting)}</td>
-        <td>${res.score ? getStars(res.score) : '—'}</td>
-        <td><span class="rating-badge ${cls}">${res.score ? esc(label) : '—'}</span></td>
+        <td>${hasScore ? getStars(res.score) : '—'}</td>
+        <td><span class="rating-badge ${cls}">${hasScore ? esc(label) : '—'}</span></td>
         <td>${statusHtml}</td>
         <td>${subDate}</td>
         <td>${appDate}</td>
@@ -806,99 +1303,65 @@ tr:hover td{background:var(--gray-50)}
     });
   }
 
-  function renderCategoryAssignment(empId){
-    const assigned = localAssigned[empId] || [];
-    const row = document.querySelector(`tr[data-emp-cat="${empId}"]`) || document.createElement('tr');
-    row.className = 'category-assign-row';
-    row.setAttribute('data-emp-cat', empId);
-    let html = `<td colspan="7" style="padding:16px;background:var(--gray-50)">`;
-    html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <strong style="font-size:1rem;"><i class="fas fa-tags"></i> Assign Categories</strong>
-      <span style="font-size:0.8rem;color:var(--gray-500);"><i class="fas fa-info-circle"></i> Changes saved automatically</span>
-    </div>`;
-    html += `<div class="cat-grid">`;
-    CATEGORIES.forEach((cat, idx) => {
-      const isActive = assigned.includes(idx);
-      const subParams = cat.params.map((p, pi) => ({name:p, idx: idx * cat.params.length + pi}));
-      html += `<div class="cat-item">`;
-      html += `<div class="cat-name">
-        <input type="checkbox" ${isActive?'checked':''} data-cat="${idx}" data-emp="${empId}" class="cat-main-check" />
-        <span>${esc(cat.name)}</span>
-        <span style="font-size:0.7rem;color:var(--gray-400);font-weight:400;">(${cat.weight}%)</span>
-      </div>`;
-      html += `<div class="sub-params">`;
-      subParams.forEach(sp => {
-        html += `<label><input type="checkbox" ${isActive?'checked':''} data-param="${sp.idx}" data-emp="${empId}" class="cat-sub-check" /> ${esc(sp.name)}</label>`;
-      });
-      html += `</div></div>`;
-    });
-    html += `</div>`;
-    html += `<div style="margin-top:12px;display:flex;gap:8px;">
-      <button class="btn btn-outline btn-sm cancel-cat-btn" data-emp="${empId}">Close</button>
-    </div>`;
-    html += `</td>`;
-    row.innerHTML = html;
-    const existingRow = document.querySelector(`tr[data-emp-cat="${empId}"]`);
-    if(existingRow) existingRow.remove();
-    const targetRow = document.querySelector(`tr:has(.assign-cat-btn[data-id="${empId}"])`);
-    if(targetRow) targetRow.after(row);
-    row.querySelectorAll('input[type="checkbox"]').forEach(chk => {
-      chk.addEventListener('change', function() { saveCategoryAssignment(empId); });
-    });
-  }
-
-  function saveCategoryAssignment(empId){
-    const checks = document.querySelectorAll(`input[data-emp="${empId}"]`);
-    const assigned = [];
-    checks.forEach(chk => {
-      if(chk.checked && chk.dataset.cat !== undefined){
-        const catIdx = parseInt(chk.dataset.cat);
-        if(!assigned.includes(catIdx)) assigned.push(catIdx);
-      }
-    });
-    const subChecks = document.querySelectorAll(`input.cat-sub-check[data-emp="${empId}"]:checked`);
-    subChecks.forEach(chk => {
-      const paramIdx = parseInt(chk.dataset.param);
-      const catIdx = Math.floor(paramIdx / CATEGORIES[0].params.length);
-      if(!assigned.includes(catIdx)) assigned.push(catIdx);
-    });
-    assigned.sort((a,b) => a-b);
-    localAssigned[empId] = assigned;
-    syncToCloud();
-    renderEmployeeList();
-    renderHRTable();
-    renderAllTable();
-    showToast('✅ Categories updated successfully!');
-  }
-
   function deleteEmployee(empId){
     const emp = localEmployees.find(e => e.id === empId);
     if(!emp) return;
-    if(!confirm(`Delete "${emp.name}"? This action cannot be undone.`)) return;
+    if(!confirm('Delete "' + (emp.displayName || emp.name) + '"? This action cannot be undone.')) return;
     localEmployees = localEmployees.filter(e => e.id !== empId);
-    delete localRatings[empId];
-    delete localCompletion[empId];
-    delete localSubmitted[empId];
-    delete localAssigned[empId];
-    delete localHrRatings[empId];
-    delete localApproved[empId];
-    delete localSubmissionDates[empId];
-    delete localApprovalDates[empId];
+    delete localRatings[empId]; delete localCompletion[empId]; delete localSubmitted[empId];
+    delete localAssigned[empId]; delete localHrRatings[empId]; delete localApproved[empId];
+    delete localSubmissionDates[empId]; delete localApprovalDates[empId]; delete localDisputes[empId];
+    delete localRecallRequests[empId]; delete localDisputeCounts[empId]; delete localRecallCounts[empId];
+    delete localCleared[empId]; delete localRecalled[empId]; delete localAssignSelection[empId];
     syncToCloud();
-    renderEmployeeList();
-    renderHRTable();
-    renderAllTable();
-    populateLogin();
-    showToast(`✅ "${emp.name}" deleted successfully!`);
+    renderEmployeeList(); renderHRTable(); renderAllTable();
+    showToast('✅ "' + (emp.displayName || emp.name) + '" deleted successfully!');
   }
 
-  function renderSubmittedSummary(empId, isEmployeeView = false, isViewOnly = false){
+  /* ============================================================
+     CLEAR EMPLOYEE DATA (used by HR "Clear" button)
+     ============================================================ */
+  function clearEmployeeData(empId) {
     const emp = localEmployees.find(e => e.id === empId);
     if(!emp) return;
-    const res = computeFinalWithHr(empId);
+    if(!confirm('Clear ALL data for "' + (emp.displayName || emp.name) + '"?\n\nThis resets ratings, HR ratings, status, submission & approval dates, disputes and recalls.\n\nFinal Score & Rating will become blank.\n\nThis cannot be undone.')) return;
+
+    localRatings[empId] = Array(totalParams).fill(0);
+    localCompletion[empId] = Array(CATEGORIES.length).fill(false);
+    localSubmitted[empId] = false;
+    localApproved[empId] = false;
+    delete localSubmissionDates[empId];
+    delete localApprovalDates[empId];
+    localHrRatings[empId] = Array(totalParams).fill(0);
+    localDisputes[empId] = {};
+    localRecallRequests[empId] = null;
+    localDisputeCounts[empId] = 0;
+    localRecallCounts[empId] = 0;
+    localCleared[empId] = false;
+    localRecalled[empId] = false;
+
+    syncToCloud();
+    renderAllTable();
+    renderHRTable();
+    renderTop5();
+
+    if(currentViewingEmp === empId) {
+      const assigned = localAssigned[empId] || [];
+      const first = assigned.length ? assigned[0] : 0;
+      renderStep(empId, first, false);
+      updateTopCard(empId);
+    }
+    showToast('🗑️ Data cleared for ' + (emp.displayName || emp.name) + '. Final Score & Rating are now blank.');
+  }
+
+  function renderSubmittedSummary(empId, isEmployeeView, isViewOnly){
+    const emp = localEmployees.find(e => e.id === empId);
+    if(!emp) return;
+    const res = computeFinal(empId);
     const assigned = localAssigned[empId] || [];
-    const totalAssignedWeight = assigned.reduce((s,ci)=>s+CATEGORIES[ci].weight,0);
-    const scorePercent = totalAssignedWeight > 0 ? (res.score / (totalAssignedWeight/100)) : 0;
+    const hasAnyRating = res.totalActiveWeight > 0 && res.score > 0;
+    const scorePercent = hasAnyRating ? Math.round((res.score / 5) * 100) : 0;
+
     if(isEmployeeView){
       isEmployeeMode = true;
       ratingCard.className = 'rating-card visible';
@@ -912,139 +1375,235 @@ tr:hover td{background:var(--gray-50)}
       if(isViewOnly) { stepArea.classList.add('view-only'); }
       else { stepArea.classList.remove('view-only'); }
     }
+
     let statusMsg = '';
     let statusClass = '';
     let extraMsg = '';
-    if(localApproved[empId]) { statusMsg = '✅ Appraisal has been approved.'; statusClass = 'approved'; }
+    const isDisputed = hasDispute(empId);
+    const isRecall = hasRecallRequest(empId);
+
+    if(isDisputed) { statusMsg = '⚠️ You have disputed some ratings. HR will review your remark.'; statusClass = 'disputed'; }
+    else if(isRecall) { statusMsg = '🔄 You have requested a recall. HR will review your request.'; statusClass = 'recalled'; }
+    else if(localRecalled[empId]) { statusMsg = '↩️ Recall approved. You can now edit your appraisal.'; statusClass = 'recalled'; }
+    else if(localApproved[empId]) { statusMsg = '✅ Appraisal has been approved.'; statusClass = 'approved'; }
     else if(localSubmitted[empId]) { statusMsg = '⬜ Appraisal awaiting HR approval.'; statusClass = 'awaiting'; extraMsg = 'Your appraisal has been submitted. '; }
     else { statusMsg = '⬜ Appraisal not started.'; statusClass = 'not-started'; }
-    const isHrReviewDone = localHrRatings[empId] && localHrRatings[empId].some(r => r > 0);
+
     const isApproved = localApproved[empId];
     const isSubmitted = localSubmitted[empId];
     const subDate = localSubmissionDates[empId] ? formatDate(localSubmissionDates[empId]) : '—';
     const appDate = localApprovalDates[empId] ? formatDate(localApprovalDates[empId]) : '—';
+
     let showHrReview = false;
     let showFinalReview = false;
-    if(!isEmployeeView) {
-      if(isApproved) { showFinalReview = true; showHrReview = true; }
-      else if(isHrReviewDone) { showHrReview = true; }
-    } else {
-      if(isApproved) { showFinalReview = true; showHrReview = true; }
-      else if(isSubmitted) { showHrReview = true; }
-    }
+    if(isApproved || isDisputed || isRecall) { showFinalReview = true; showHrReview = true; }
+    else if(isSubmitted) { showHrReview = true; }
+
     let html = '';
+
     if(isEmployeeView){
-      html += `
-        <div class="employee-welcome" style="display:block">
-          <h3 class="welcome-title">👋 Hi, ${esc(emp.name)}</h3>
-          <div class="emp-details">${esc(emp.department)} · ${esc(emp.businessUnit)}</div>
-          ${isSubmitted && !isApproved ? `<p>${extraMsg}<span class="status-msg ${statusClass}">${statusMsg}</span></p>` : ''}
-          ${isApproved ? `<p class="status-msg ${statusClass}">${statusMsg}</p>` : ''}
-          ${isSubmitted || isApproved ? `<div class="date-info"><i class="far fa-calendar-alt"></i> Submitted: ${subDate}</div>` : ''}
-          ${isApproved ? `<div class="date-info"><i class="far fa-calendar-check"></i> Approved: ${appDate}</div>` : ''}
-        </div>
-      `;
+      html += '<div class="employee-welcome" style="display:block">';
+      html += '<h3 class="welcome-title">👋 Hi, ' + esc(emp.displayName || emp.name) + '</h3>';
+      html += '<div class="emp-details">' + esc(emp.department) + ' · ' + esc(emp.businessUnit) + '</div>';
+      if(isSubmitted && !isApproved && !isDisputed && !isRecall) {
+        html += '<p>' + extraMsg + '<span class="status-msg ' + statusClass + '">' + statusMsg + '</span></p>';
+      }
+      if(isApproved || isDisputed || isRecall || localRecalled[empId]) {
+        html += '<p class="status-msg ' + statusClass + '">' + statusMsg + '</p>';
+      }
+      if(isSubmitted || isApproved || isDisputed || isRecall) {
+        html += '<div class="date-info"><i class="far fa-calendar-alt"></i> Submitted: ' + subDate + '</div>';
+      }
+      if(isApproved || isDisputed || isRecall) {
+        html += '<div class="date-info"><i class="far fa-calendar-check"></i> Approved: ' + appDate + '</div>';
+      }
+      html += '</div>';
     } else {
-      html += `<div style="margin-bottom:12px;padding:8px 0;border-bottom:1px solid var(--gray-200);">
-        ${isSubmitted || isApproved ? `<div class="date-info"><i class="far fa-calendar-alt"></i> Submitted: ${subDate}</div>` : ''}
-        ${isApproved ? `<div class="date-info"><i class="far fa-calendar-check"></i> Approved: ${appDate}</div>` : ''}
-        <div class="hr-status-msg ${statusClass}" style="margin-top:4px;">${statusMsg}</div>
-      </div>`;
+      html += '<div style="margin-bottom:12px;padding:8px 0;border-bottom:1px solid var(--gray-200);">';
+      if(isSubmitted || isApproved || isDisputed || isRecall) {
+        html += '<div class="date-info"><i class="far fa-calendar-alt"></i> Submitted: ' + subDate + '</div>';
+      }
+      if(isApproved || isDisputed || isRecall) {
+        html += '<div class="date-info"><i class="far fa-calendar-check"></i> Approved: ' + appDate + '</div>';
+      }
+      html += '<div class="hr-status-msg ' + statusClass + '" style="margin-top:4px;">' + statusMsg + '</div>';
+      html += '</div>';
     }
-    html += `
-      <div class="submitted-summary">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--gray-200);margin-bottom:16px;">
-          <div></div>
-          <div class="overall" style="text-align:right;">
-            <div style="font-size:2rem;font-weight:800;color:var(--primary);">${scorePercent.toFixed(0)}%</div>
-            <div style="font-size:0.8rem;color:var(--gray-500);">OVERALL RATING · ${res.score.toFixed(2)} / 5 (${overallLabel(res.score)})</div>
-          </div>
-        </div>
-        <div id="hrRatingContainer">
-    `;
+
+    if(!isEmployeeView && isRecall) {
+      html += '<div class="dispute-box" style="background:#fffbeb;border:1px solid #fcd34d;padding:12px;border-radius:8px;margin-bottom:16px;">';
+      html += '<strong style="color:#b45309;display:block;margin-bottom:8px;"><i class="fas fa-history"></i> Employee Recall Request Reason:</strong>';
+      html += '<div style="background:#fff;padding:12px;border-radius:6px;border:1px solid #fcd34d;font-style:italic;">"' + esc(localRecallRequests[empId]) + '"</div>';
+      html += '</div>';
+    }
+
+    html += '<div class="submitted-summary">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--gray-200);margin-bottom:16px;">';
+    html += '<div></div>';
+    html += '<div class="overall" style="text-align:right;">';
+    html += '<div style="font-size:2rem;font-weight:800;color:var(--primary);">' + (hasAnyRating ? scorePercent + '%' : '—') + '</div>';
+    html += '<div style="font-size:0.8rem;color:var(--gray-500);">OVERALL RATING · ' + (hasAnyRating ? res.score.toFixed(2) + ' / 5 (' + overallLabel(res.score) + ')' : 'Not Rated') + '</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div id="hrRatingContainer">';
+
     CATEGORIES.forEach((cat, ci) => {
       if(!assigned.includes(ci)) return;
       const catDetails = res.details.find(d => d.cat === cat.name);
       const catAvg = catDetails ? parseFloat(catDetails.avg) : 0;
       const catParams = catDetails ? catDetails.params : [];
-      html += `<div class="summary-category">
-        <div class="cat-title">${esc(cat.name)} <span class="cat-score">${catAvg.toFixed(1)}%</span></div>`;
-      let columns = '<span class="col-header">Parameter</span><span class="col-header self-col">Self Review</span>';
-      if(showHrReview) { columns += `<span class="col-header hr-col">HR Review</span>`; }
-      if(showFinalReview) { columns += `<span class="col-header final-col">Final Review</span>`; }
-      html += `<div class="summary-ratings-row" style="font-weight:600;border-bottom:2px solid var(--gray-200);">
-        ${columns}
-      </div>`;
-      catParams.forEach(p => {
+      html += '<div class="summary-category">';
+      html += '<div class="cat-title">' + esc(cat.name) + ' <span class="cat-score">' + catAvg.toFixed(1) + '</span></div>';
+
+      const rowClass = 'summary-ratings-row has-weight';
+      let columns = '<span class="col-header">Parameter</span><span class="col-header weight-col">Wt</span><span class="col-header self-col">Self</span>';
+      if(showHrReview) { columns += '<span class="col-header hr-col">HR</span>'; }
+      if(showFinalReview) { columns += '<span class="col-header final-col">Final</span>'; }
+      html += '<div class="' + rowClass + '" style="font-weight:600;border-bottom:2px solid var(--gray-200);">' + columns + '</div>';
+
+      catParams.forEach((p, pIdx) => {
+        const globalIdx = PARAM_OFFSETS[ci] + pIdx;
         const empLabel = p.empRating > 0 ? RATING_SHORT[p.empRating] : '—';
         const hrLabel = p.hrRating > 0 ? RATING_SHORT[p.hrRating] : '—';
+        const finalLabel = p.finalRating > 0 ? RATING_SHORT[p.finalRating] : '—';
+
         if(isEmployeeView){
-          let rowHtml = `<span class="param-name">${esc(p.name)}</span><span class="self-col">${empLabel}</span>`;
-          if(showHrReview) { rowHtml += `<span class="hr-col">${hrLabel}</span>`; }
-          if(showFinalReview) { rowHtml += `<span class="final-col">${hrLabel}</span>`; }
-          html += `<div class="summary-ratings-row">${rowHtml}</div>`;
+          let rowHtml = '<span class="param-name">' + esc(p.name) + '</span>';
+          rowHtml += '<span class="weight-col">' + p.weight + '%</span>';
+          rowHtml += '<span class="self-col">' + empLabel + '</span>';
+          if(showHrReview) {
+            let hrColHtml = hrLabel;
+            const currentDisputes = localDisputeCounts[empId] || 0;
+            if(isApproved && p.hrRating > 0 && currentDisputes < systemSettings.maxDisputes) {
+               hrColHtml += '<button class="dispute-btn-small dispute-item-btn" data-emp="' + empId + '" data-idx="' + globalIdx + '">Disagree</button>';
+               if(localDisputes[empId] && localDisputes[empId][globalIdx]) {
+                  hrColHtml += '<div class="dispute-reason-box" style="display:block;margin-top:4px;font-size:0.75rem;padding:6px;"><strong>Reason:</strong> ' + esc(localDisputes[empId][globalIdx]) + '</div>';
+               }
+            }
+            rowHtml += '<span class="hr-col">' + hrColHtml + '</span>';
+          }
+          if(showFinalReview) { rowHtml += '<span class="final-col">' + finalLabel + '</span>'; }
+          html += '<div class="' + rowClass + '">' + rowHtml + '</div>';
+
+          if(isApproved) {
+            html += '<div id="disputeForm_' + globalIdx + '" style="display:none; grid-column: 1 / -1; margin-bottom:8px;">';
+            html += '<div class="dispute-reason-box">';
+            html += '<textarea id="disputeReason_' + globalIdx + '" placeholder="Reason for disagreement..."></textarea>';
+            html += '<div style="display:flex; gap:8px;">';
+            html += '<button class="btn btn-danger btn-xs submit-dispute-btn" data-emp="' + empId + '" data-idx="' + globalIdx + '">Submit</button>';
+            html += '<button class="btn btn-outline btn-xs cancel-dispute-btn" data-idx="' + globalIdx + '">Cancel</button>';
+            html += '</div></div></div>';
+          }
         } else {
-          const disabled = isApproved || isViewOnly;
-          const hrSelect = `
-            <select class="hr-rating-select" data-param="${cat.params.indexOf(p)}" data-cat="${ci}" data-emp="${empId}" style="width:100%;" ${disabled ? 'disabled' : ''}>
-              <option value="0">—</option>
-              <option value="1" ${p.hrRating===1?'selected':''}>1 · Unsatisfactory</option>
-              <option value="2" ${p.hrRating===2?'selected':''}>2 · Needs Improvement</option>
-              <option value="3" ${p.hrRating===3?'selected':''}>3 · Meets</option>
-              <option value="4" ${p.hrRating===4?'selected':''}>4 · Exceeds</option>
-              <option value="5" ${p.hrRating===5?'selected':''}>5 · Outstanding</option>
-            </select>
-          `;
-          const hrDisplay = (isApproved || isViewOnly) ? hrLabel : hrSelect;
-          let rowHtml = `<span class="param-name">${esc(p.name)}</span><span class="self-col">${empLabel}</span>`;
-          if(showHrReview) { rowHtml += `<span class="hr-col">${hrDisplay}</span>`; }
-          if(showFinalReview) { rowHtml += `<span class="final-col">${hrLabel}</span>`; }
-          html += `<div class="summary-ratings-row">${rowHtml}</div>`;
+          const hasSpecificDispute = isDisputed && localDisputes[empId] && localDisputes[empId][globalIdx];
+          const disabled = (isApproved && !hasSpecificDispute) || isViewOnly || isRecall || localRecalled[empId];
+
+          let hrDisplay;
+          if(disabled) {
+            hrDisplay = hrLabel;
+          } else {
+            hrDisplay = '<select class="hr-rating-select" data-param="' + pIdx + '" data-cat="' + ci + '" data-emp="' + empId + '" style="width:100%;">';
+            hrDisplay += '<option value="0">—</option>';
+            hrDisplay += '<option value="1"' + (p.hrRating===1?' selected':'') + '>1 · Unsatisfactory</option>';
+            hrDisplay += '<option value="2"' + (p.hrRating===2?' selected':'') + '>2 · Needs Improvement</option>';
+            hrDisplay += '<option value="3"' + (p.hrRating===3?' selected':'') + '>3 · Meets</option>';
+            hrDisplay += '<option value="4"' + (p.hrRating===4?' selected':'') + '>4 · Exceeds</option>';
+            hrDisplay += '<option value="5"' + (p.hrRating===5?' selected':'') + '>5 · Outstanding</option>';
+            hrDisplay += '</select>';
+          }
+
+          let rowHtml = '<span class="param-name">' + esc(p.name) + '</span>';
+          rowHtml += '<span class="weight-col">' + p.weight + '%</span>';
+          rowHtml += '<span class="self-col">' + empLabel + '</span>';
+          if(showHrReview) { rowHtml += '<span class="hr-col">' + hrDisplay + '</span>'; }
+          if(showFinalReview) { rowHtml += '<span class="final-col">' + finalLabel + '</span>'; }
+          html += '<div class="' + rowClass + '">' + rowHtml + '</div>';
+
+          if(hasSpecificDispute) {
+            html += '<div class="dispute-reason-box" style="margin-bottom:8px;">';
+            html += '<strong style="color:#991b1b;display:block;margin-bottom:4px;font-size:0.75rem;"><i class="fas fa-exclamation-triangle"></i> Employee Dispute:</strong>';
+            html += '<div style="font-style:italic;font-size:0.85rem;">"' + esc(localDisputes[empId][globalIdx]) + '"</div>';
+            html += '</div>';
+          }
         }
       });
-      html += `</div>`;
+      html += '</div>';
     });
-    html += `</div>`;
+
+    html += '</div>';
+
     if(!isEmployeeView){
       if(isViewOnly) {
-        html += `<div class="hr-rating-actions"><button class="btn btn-outline btn-sm" id="closeSummaryBtn">Close</button></div>`;
+        html += '<div class="hr-rating-actions"><button class="btn btn-outline btn-sm" id="closeSummaryBtn">Close</button></div>';
       } else {
-        html += `<div class="hr-rating-actions">
-          ${!isApproved ? `<button class="btn btn-primary btn-sm" id="saveHrRatingsBtn" data-emp="${empId}"><i class="fas fa-save"></i> Save HR Ratings</button>` : ''}
-          ${!isApproved && isSubmitted ? `<button class="btn btn-success btn-sm" id="approveFromHrBtn" data-emp="${empId}"><i class="fas fa-check"></i> Approve Appraisal</button>` : ''}
-          ${isApproved ? '<span style="color:var(--success);font-weight:600;"><i class="fas fa-check-circle"></i> ✅ Approved</span>' : ''}
-          <button class="btn btn-outline btn-sm" id="closeSummaryBtn">Close</button>
-        </div>`;
+        html += '<div class="hr-rating-actions">';
+        if(isRecall) {
+          html += '<button class="btn btn-success btn-sm" id="approveRecallBtn" data-emp="' + empId + '"><i class="fas fa-check"></i> Approve Recall</button>';
+          html += '<button class="btn btn-danger btn-sm" id="rejectRecallBtn" data-emp="' + empId + '"><i class="fas fa-times"></i> Reject Recall</button>';
+        } else {
+          if(!isApproved && !isDisputed && !localRecalled[empId]) {
+            html += '<button class="btn btn-primary btn-sm" id="saveHrRatingsBtn" data-emp="' + empId + '"><i class="fas fa-save"></i> Save HR Ratings</button>';
+          }
+          if((!isApproved || isDisputed) && isSubmitted) {
+            html += '<button class="btn btn-success btn-sm" id="approveFromHrBtn" data-emp="' + empId + '"><i class="fas fa-check"></i> ' + (isDisputed ? 'Update Rating & Re-Approve' : 'Approve Appraisal') + '</button>';
+          }
+        }
+        if(isApproved && !isDisputed && !isRecall) {
+          html += '<span style="color:var(--success);font-weight:600;"><i class="fas fa-check-circle"></i> ✅ Approved</span>';
+        }
+        if(localRecalled[empId]) {
+          html += '<span style="color:#4338ca;font-weight:600;"><i class="fas fa-undo"></i> ↩️ Recalled — awaiting employee edits</span>';
+        }
+        html += '<button class="btn btn-outline btn-sm" id="closeSummaryBtn">Close</button>';
+        html += '</div>';
       }
     } else {
-      html += `<div class="hr-rating-actions">`;
-      if(isSubmitted && !isApproved) {
-        html += `<button class="btn btn-warning btn-sm" id="recallBtn" data-emp="${empId}"><i class="fas fa-undo"></i> Recall Appraisal</button>`;
-        html += `<span style="font-size:0.8rem;color:var(--gray-500);margin-left:8px;">You can recall and modify before HR approves</span>`;
+      html += '<div class="hr-rating-actions">';
+      const currentRecalls = localRecallCounts[empId] || 0;
+      if(isApproved && !isDisputed && !isRecall && currentRecalls < systemSettings.maxRecalls) {
+        html += '<div style="width:100%; margin-bottom:8px;">';
+        html += '<button class="btn btn-warning btn-sm" id="requestRecallBtn" data-emp="' + empId + '"><i class="fas fa-undo"></i> Request Recall (' + currentRecalls + '/' + systemSettings.maxRecalls + ')</button>';
+        html += '</div>';
+        html += '<div id="recallForm" style="display:none; width:100%; margin-bottom:8px;">';
+        html += '<textarea id="recallReason" placeholder="Please explain why you want to recall..." style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; font-family:inherit; min-height:80px;"></textarea>';
+        html += '<div style="display:flex; gap:8px; margin-top:8px;">';
+        html += '<button class="btn btn-warning btn-sm" id="submitRecallBtn" data-emp="' + empId + '">Submit Request</button>';
+        html += '<button class="btn btn-outline btn-sm" id="cancelRecallBtn">Cancel</button>';
+        html += '</div></div>';
+      } else if(isApproved && currentRecalls >= systemSettings.maxRecalls && !isDisputed && !isRecall) {
+        html += '<div style="width:100%; margin-bottom:8px; font-size:0.85rem; color:var(--danger);">You have reached the maximum number of recall requests (' + systemSettings.maxRecalls + ').</div>';
+      } else if(isDisputed) {
+        html += '<span style="font-size:0.8rem;color:var(--danger);font-weight:600;margin-left:8px;">Your remark has been sent to HR.</span>';
+      } else if(isRecall) {
+        html += '<span style="font-size:0.8rem;color:var(--warning);font-weight:600;margin-left:8px;">Recall request pending HR approval.</span>';
+      } else if(localRecalled[empId]) {
+        html += '<button class="btn btn-primary btn-sm" id="editAppraisalBtn" data-emp="' + empId + '"><i class="fas fa-edit"></i> Edit Appraisal</button>';
       } else if(!isSubmitted && !isApproved) {
         const assignedCategories = localAssigned[empId] || [];
         const allDone = assignedCategories.every(ci => localCompletion[empId] && localCompletion[empId][ci]);
-        html += `<button class="btn btn-primary btn-sm" id="editAppraisalBtn" data-emp="${empId}"><i class="fas fa-edit"></i> Edit Appraisal</button>`;
+        html += '<button class="btn btn-primary btn-sm" id="editAppraisalBtn" data-emp="' + empId + '"><i class="fas fa-edit"></i> Edit Appraisal</button>';
         if(allDone && assignedCategories.length > 0) {
-          html += `<button class="btn btn-success btn-sm" id="submitBtn" data-emp="${empId}"><i class="fas fa-check-circle"></i> Submit Appraisal</button>`;
+          html += '<button class="btn btn-success btn-sm" id="submitBtn" data-emp="' + empId + '"><i class="fas fa-check-circle"></i> Submit Appraisal</button>';
         }
       }
-      html += `<button class="btn btn-outline btn-sm" id="employeeCloseBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>`;
-      html += `</div>`;
+      html += '<button class="btn btn-outline btn-sm" id="employeeCloseBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>';
+      html += '</div>';
     }
-    html += `</div>`;
+
+    html += '</div>';
     stepArea.innerHTML = html;
     updateTopCard(empId);
 
     if(!isEmployeeView){
-      document.getElementById('saveHrRatingsBtn')?.addEventListener('click', function() {
+      const saveBtn = document.getElementById('saveHrRatingsBtn');
+      if(saveBtn) saveBtn.addEventListener('click', function() {
         const eid = this.dataset.emp;
         const selects = document.querySelectorAll('.hr-rating-select');
         const hrRatings = Array(totalParams).fill(0);
         selects.forEach(sel => {
           const paramIdx = parseInt(sel.dataset.param);
           const catIdx = parseInt(sel.dataset.cat);
-          const globalIdx = catIdx * CATEGORIES[0].params.length + paramIdx;
+          const globalIdx = PARAM_OFFSETS[catIdx] + paramIdx;
           hrRatings[globalIdx] = parseInt(sel.value) || 0;
         });
         localHrRatings[eid] = hrRatings;
@@ -1055,11 +1614,25 @@ tr:hover td{background:var(--gray-50)}
         showToast('✅ HR Ratings saved successfully!');
       });
 
-      document.getElementById('approveFromHrBtn')?.addEventListener('click', function() {
+      const approveHrBtn = document.getElementById('approveFromHrBtn');
+      if(approveHrBtn) approveHrBtn.addEventListener('click', function() {
         const eid = this.dataset.emp;
         if(!confirm('Approve this appraisal?')) return;
+        const selects = document.querySelectorAll('.hr-rating-select');
+        if(selects.length > 0) {
+          const hrRatings = Array(totalParams).fill(0);
+          selects.forEach(sel => {
+            const paramIdx = parseInt(sel.dataset.param);
+            const catIdx = parseInt(sel.dataset.cat);
+            const globalIdx = PARAM_OFFSETS[catIdx] + paramIdx;
+            hrRatings[globalIdx] = parseInt(sel.value) || 0;
+          });
+          localHrRatings[eid] = hrRatings;
+        }
         localApproved[eid] = true;
         localApprovalDates[eid] = Date.now();
+        localDisputes[eid] = {};
+        localRecalled[eid] = false;
         syncToCloud();
         renderAllTable();
         renderHRTable();
@@ -1067,7 +1640,41 @@ tr:hover td{background:var(--gray-50)}
         showToast('✅ Appraisal approved successfully!');
       });
 
-      document.getElementById('closeSummaryBtn')?.addEventListener('click', function() {
+      const approveRecallBtn = document.getElementById('approveRecallBtn');
+      if(approveRecallBtn) approveRecallBtn.addEventListener('click', function() {
+        const eid = this.dataset.emp;
+        if(!confirm('Approve recall? This will unlock the appraisal for the employee to edit.')) return;
+        localRecallRequests[eid] = null;
+        localSubmitted[eid] = false;
+        localApproved[eid] = false;
+        delete localSubmissionDates[eid];
+        delete localApprovalDates[eid];
+        localDisputes[eid] = {};
+        if(!localRecallCounts[eid]) localRecallCounts[eid] = 0;
+        localRecallCounts[eid]++;
+        localCleared[eid] = true;
+        localRecalled[eid] = true;   // <-- Status becomes "Recalled"
+        syncToCloud();
+        renderAllTable();
+        renderHRTable();
+        resetToHRView();
+        showToast('✅ Recall approved. Status: Recalled.');
+      });
+
+      const rejectRecallBtn = document.getElementById('rejectRecallBtn');
+      if(rejectRecallBtn) rejectRecallBtn.addEventListener('click', function() {
+        const eid = this.dataset.emp;
+        if(!confirm('Reject this recall request? The appraisal will remain approved.')) return;
+        localRecallRequests[eid] = null;
+        syncToCloud();
+        renderAllTable();
+        renderHRTable();
+        resetToHRView();
+        showToast('❌ Recall request rejected.');
+      });
+
+      const closeBtn = document.getElementById('closeSummaryBtn');
+      if(closeBtn) closeBtn.addEventListener('click', function() {
         const selects = document.querySelectorAll('.hr-rating-select');
         if(selects.length > 0 && !localApproved[selects[0].dataset.emp]){
           const eid = selects[0].dataset.emp;
@@ -1075,7 +1682,7 @@ tr:hover td{background:var(--gray-50)}
           selects.forEach(sel => {
             const paramIdx = parseInt(sel.dataset.param);
             const catIdx = parseInt(sel.dataset.cat);
-            const globalIdx = catIdx * CATEGORIES[0].params.length + paramIdx;
+            const globalIdx = PARAM_OFFSETS[catIdx] + paramIdx;
             hrRatings[globalIdx] = parseInt(sel.value) || 0;
           });
           localHrRatings[eid] = hrRatings;
@@ -1084,39 +1691,81 @@ tr:hover td{background:var(--gray-50)}
         resetToHRView();
       });
     } else {
-      document.getElementById('recallBtn')?.addEventListener('click', function() {
-        const eid = this.dataset.emp;
-        if(!confirm('Recall this appraisal? You will be able to modify and resubmit.')) return;
-        localSubmitted[eid] = false;
-        localApproved[eid] = false;
-        delete localSubmissionDates[eid];
-        delete localApprovalDates[eid];
-        syncToCloud();
-        renderStep(eid, 0, true);
-        showToast('✅ Appraisal recalled. You can now edit and resubmit.');
+      stepArea.querySelectorAll('.dispute-item-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const idx = this.dataset.idx;
+          document.getElementById('disputeForm_' + idx).style.display = 'block';
+          this.style.display = 'none';
+        });
+      });
+      stepArea.querySelectorAll('.cancel-dispute-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const idx = this.dataset.idx;
+          document.getElementById('disputeForm_' + idx).style.display = 'none';
+          document.querySelector('.dispute-item-btn[data-idx="' + idx + '"]').style.display = 'inline-block';
+        });
+      });
+      stepArea.querySelectorAll('.submit-dispute-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const eid = this.dataset.emp;
+          const idx = this.dataset.idx;
+          const reason = document.getElementById('disputeReason_' + idx).value.trim();
+          if(!reason) { alert('Please enter a reason.'); return; }
+          if(!localDisputes[eid]) localDisputes[eid] = {};
+          localDisputes[eid][idx] = reason;
+          if(!localDisputeCounts[eid]) localDisputeCounts[eid] = 0;
+          localDisputeCounts[eid]++;
+          syncToCloud();
+          renderSubmittedSummary(eid, true);
+          updateTopCard(eid);
+          showToast('⚠️ Remark submitted to HR.');
+        });
       });
 
-      document.getElementById('editAppraisalBtn')?.addEventListener('click', function() {
+      const requestRecallBtn = document.getElementById('requestRecallBtn');
+      if(requestRecallBtn) requestRecallBtn.addEventListener('click', function() {
+        this.style.display = 'none';
+        document.getElementById('recallForm').style.display = 'block';
+      });
+      const cancelRecallBtn = document.getElementById('cancelRecallBtn');
+      if(cancelRecallBtn) cancelRecallBtn.addEventListener('click', function() {
+        document.getElementById('requestRecallBtn').style.display = 'inline-flex';
+        document.getElementById('recallForm').style.display = 'none';
+        document.getElementById('recallReason').value = '';
+      });
+      const submitRecallBtn = document.getElementById('submitRecallBtn');
+      if(submitRecallBtn) submitRecallBtn.addEventListener('click', function() {
+        const eid = this.dataset.emp;
+        const reason = document.getElementById('recallReason').value.trim();
+        if(!reason) { alert('Please enter a reason for the recall.'); return; }
+        localRecallRequests[eid] = reason;
+        syncToCloud();
+        renderSubmittedSummary(eid, true);
+        updateTopCard(eid);
+        showToast('🔄 Recall request sent to HR.');
+      });
+      const editAppraisalBtn = document.getElementById('editAppraisalBtn');
+      if(editAppraisalBtn) editAppraisalBtn.addEventListener('click', function() {
         const eid = this.dataset.emp;
         const assigned = localAssigned[eid] || [];
         const first = assigned.length ? assigned[0] : 0;
         renderStep(eid, first, true);
       });
-
-      document.getElementById('submitBtn')?.addEventListener('click', function() {
+      const submitBtn = document.getElementById('submitBtn');
+      if(submitBtn) submitBtn.addEventListener('click', function() {
         const eid = this.dataset.emp;
         if(!confirm('Submit this appraisal?')) return;
         localSubmitted[eid] = true;
         localSubmissionDates[eid] = Date.now();
+        localCleared[eid] = false;
+        localRecalled[eid] = false;
         syncToCloud();
         renderSubmittedSummary(eid, true);
         updateTopCard(eid);
         showToast('✅ Appraisal submitted successfully!');
       });
-
-      document.getElementById('employeeCloseBtn')?.addEventListener('click', function() {
-        doLogout();
-      });
+      const empCloseBtn = document.getElementById('employeeCloseBtn');
+      if(empCloseBtn) empCloseBtn.addEventListener('click', doLogout);
     }
   }
 
@@ -1146,20 +1795,21 @@ tr:hover td{background:var(--gray-50)}
     const isSubmitted = !!localSubmitted[empId];
     const assigned = localAssigned[empId] || [];
 
-    if(isSubmitted || localApproved[empId]){
+    if(isSubmitted || localApproved[empId] || hasDispute(empId) || hasRecallRequest(empId)){
       renderSubmittedSummary(empId, isEmployeeView, false);
       return;
     }
 
     if(!assigned.includes(catIdx) && assigned.length){ catIdx = assigned[0]; }
     else if(!assigned.includes(catIdx) && !assigned.length){
-      stepArea.innerHTML = `<div style="padding:30px;text-align:center;color:var(--gray-500);background:var(--gray-50);border-radius:var(--radius);border:1px solid var(--gray-200)">
-        <i class="fas fa-info-circle" style="font-size:2rem;display:block;margin-bottom:12px;color:var(--gray-400)"></i>
-        <h3>No categories assigned</h3><p style="margin-top:8px">Please contact HR to assign categories for your appraisal.</p>
-        ${isEmployeeView ? `<button class="btn btn-outline btn-sm" id="employeeLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>` : ''}
-      </div>`;
+      stepArea.innerHTML = '<div style="padding:30px;text-align:center;color:var(--gray-500);background:var(--gray-50);border-radius:var(--radius);border:1px solid var(--gray-200)">'
+        + '<i class="fas fa-info-circle" style="font-size:2rem;display:block;margin-bottom:12px;color:var(--gray-400)"></i>'
+        + '<h3>No categories assigned</h3><p style="margin-top:8px">Please contact HR to assign categories for your appraisal.</p>'
+        + (isEmployeeView ? '<button class="btn btn-outline btn-sm" id="employeeLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>' : '')
+        + '</div>';
       if(isEmployeeView){
-        document.getElementById('employeeLogoutBtn')?.addEventListener('click', doLogout);
+        const btn = document.getElementById('employeeLogoutBtn');
+        if(btn) btn.addEventListener('click', doLogout);
       }
       return;
     }
@@ -1173,17 +1823,26 @@ tr:hover td{background:var(--gray-50)}
     let html = '';
     if(isEmployeeView){
       const emp = localEmployees.find(e => e.id === empId);
-      html += `<div class="employee-welcome" style="display:block">
-        <h3 class="welcome-title">👋 Hi, ${esc(emp?.name || 'Employee')}</h3>
-        <div class="emp-details">${esc(emp?.department || '')} · ${esc(emp?.businessUnit || '')}</div>
-        ${!anyStepCompleted ? `<p>Complete your self-assessment by rating each parameter below. Your responses are saved automatically.</p>` : ''}
-        <div style="margin-top:8px;">
-          <div class="progress-text">Overall Progress: ${progress}%</div>
-          <div class="progress-bar"><div class="fill" style="width:${progress}%"></div></div>
-          ${allStepsDone && hasRatings ? `<div style="color:var(--success);font-weight:600;margin-top:4px;">✅ All stages complete! Ready to submit.</div>` : ''}
-          ${!allStepsDone && progress > 0 ? `<div style="color:var(--warning);font-weight:600;margin-top:4px;">⏳ Complete all stages to submit</div>` : ''}
-        </div>
-      </div>`;
+      html += '<div class="employee-welcome" style="display:block">';
+      html += '<h3 class="welcome-title">👋 Hi, ' + esc(emp?.displayName || emp?.name || 'Employee') + '</h3>';
+      html += '<div class="emp-details">' + esc(emp?.department || '') + ' · ' + esc(emp?.businessUnit || '') + '</div>';
+      if(!anyStepCompleted) {
+        html += '<p>Complete your self-assessment by rating each parameter below. Your responses are saved automatically.</p>';
+      }
+      html += '<div style="margin-top:8px;">';
+      html += '<div class="progress-text">Overall Progress: ' + progress + '%</div>';
+      html += '<div class="progress-bar"><div class="fill" style="width:' + progress + '%"></div></div>';
+      if(allStepsDone && hasRatings) {
+        html += '<div style="color:var(--success);font-weight:600;margin-top:4px;">✅ All stages complete! Ready to submit.</div>';
+      }
+      if(!allStepsDone && progress > 0) {
+        html += '<div style="color:var(--warning);font-weight:600;margin-top:4px;">⏳ Complete all stages to submit</div>';
+      }
+      html += '</div>';
+      if(localCleared[empId]) {
+        html += '<div style="margin-top:12px;"><button class="btn btn-danger btn-sm" id="clearRatingsBtn" data-emp="' + empId + '">Clear All Ratings</button></div>';
+      }
+      html += '</div>';
     }
 
     html += '<div class="step-progress">';
@@ -1195,72 +1854,76 @@ tr:hover td{background:var(--gray-50)}
       if(isDone) cls += ' completed';
       if(isActive) cls += ' active';
       if(!isAssigned) cls += ' disabled';
-      html += `<span class="${cls}" data-cat="${ci}" ${!isAssigned ? 'style="opacity:0.4;cursor:not-allowed"' : ''}>${ci+1}. ${cat.name}</span>`;
+      html += '<span class="' + cls + '" data-cat="' + ci + '"' + (!isAssigned ? ' style="opacity:0.4;cursor:not-allowed"' : '') + '>' + (ci+1) + '. ' + cat.name + '</span>';
     });
     html += '</div>';
 
     const cat = CATEGORIES[catIdx];
-    let base = 0;
-    for(let i = 0; i < catIdx; i++) base += CATEGORIES[i].params.length;
+    const base = PARAM_OFFSETS[catIdx];
 
     const vals = [];
     for(let i = 0; i < cat.params.length; i++){ const v = ratings[base+i] || 0; if(v > 0) vals.push(v); }
     const catAvg = vals.length ? (vals.reduce((a,b) => a+b, 0) / vals.length) : 0;
     const catAvgDisplay = catAvg ? catAvg.toFixed(2) : '—';
 
-    html += `<div class="step-card"><div class="step-title">
-      <i class="fas fa-list-ul"></i> ${esc(cat.name)}
-      <span style="font-weight:400;font-size:0.85rem;color:var(--gray-500)">Weight: ${cat.weight}%</span>
-      <span class="step-rating-summary"><i class="fas fa-chart-simple"></i> Avg: <strong>${catAvgDisplay}</strong></span>
-    </div>`;
+    html += '<div class="step-card"><div class="step-title">';
+    html += '<i class="fas fa-list-ul"></i> ' + esc(cat.name);
+    html += '<span style="font-weight:400;font-size:0.85rem;color:var(--gray-500)">Weight: ' + cat.weight + '%</span>';
+    html += '<span class="step-rating-summary"><i class="fas fa-chart-simple"></i> Avg: <strong>' + catAvgDisplay + '</strong></span>';
+    html += '</div>';
 
     cat.params.forEach((param, pIdx) => {
       const global = base + pIdx;
       const val = ratings[global] || 0;
-      const desc = val > 0 && PARAM_DESCS[param] && PARAM_DESCS[param][val] ? PARAM_DESCS[param][val] : '';
+      const desc = val > 0 && PARAM_DESCS[param.name] && PARAM_DESCS[param.name][val] ? PARAM_DESCS[param.name][val] : '';
       const label = val > 0 ? RATING_LABELS[val] : '';
       const isDisabled = isEmployeeView && (isSubmitted || localApproved[empId]);
-      html += `<div class="param-row">
-        <label class="param-label">${esc(param)}</label>
-        <div class="param-controls">
-          <select class="param-select" data-global="${global}" data-emp="${empId}" ${isDisabled ? 'disabled' : ''}>
-            <option value="0" ${val===0 ? 'selected' : ''}>— Select —</option>
-            <option value="1" ${val===1 ? 'selected' : ''}>1 · Unsatisfactory</option>
-            <option value="2" ${val===2 ? 'selected' : ''}>2 · Needs Improvement</option>
-            <option value="3" ${val===3 ? 'selected' : ''}>3 · Meets Expectations</option>
-            <option value="4" ${val===4 ? 'selected' : ''}>4 · Exceeds Expectations</option>
-            <option value="5" ${val===5 ? 'selected' : ''}>5 · Outstanding</option>
-          </select>
-          <div class="rating-desc-box">${desc ? `<span class="desc-label">${esc(label)}</span><span class="desc-text">${esc(desc)}</span>` : '<span class="desc-empty">Select a rating to see description</span>'}</div>
-        </div>
-      </div>`;
+      html += '<div class="param-row">';
+      html += '<label class="param-label">' + esc(param.name) + '<span class="param-weight">' + param.weight + '%</span></label>';
+      html += '<div class="param-controls">';
+      html += '<select class="param-select" data-global="' + global + '" data-emp="' + empId + '"' + (isDisabled ? ' disabled' : '') + '>';
+      html += '<option value="0"' + (val===0 ? ' selected' : '') + '>— Select —</option>';
+      html += '<option value="1"' + (val===1 ? ' selected' : '') + '>1 · Unsatisfactory</option>';
+      html += '<option value="2"' + (val===2 ? ' selected' : '') + '>2 · Needs Improvement</option>';
+      html += '<option value="3"' + (val===3 ? ' selected' : '') + '>3 · Meets Expectations</option>';
+      html += '<option value="4"' + (val===4 ? ' selected' : '') + '>4 · Exceeds Expectations</option>';
+      html += '<option value="5"' + (val===5 ? ' selected' : '') + '>5 · Outstanding</option>';
+      html += '</select>';
+      html += '<div class="rating-desc-box">' + (desc ? '<span class="desc-label">' + esc(label) + '</span><span class="desc-text">' + esc(desc) + '</span>' : '<span class="desc-empty">Select a rating to see description</span>') + '</div>';
+      html += '</div></div>';
     });
 
-    html += `<div class="step-actions">`;
+    html += '<div class="step-actions">';
     const allRated = cat.params.every((_, i) => (ratings[base+i] || 0) > 0);
     const prevDone = catIdx === 0 || completed[catIdx - 1];
-    const nextDisabled = !allRated || !prevDone || isSubmitted || localApproved[empId];
-    if(isEmployeeView && !isSubmitted && !localApproved[empId]){
-      html += `<button class="btn btn-primary next-btn" data-step="${catIdx}" ${nextDisabled ? 'disabled' : ''}>${catIdx < CATEGORIES.length - 1 ? 'Save & Next' : 'Save & Complete'} <i class="fas fa-save"></i></button>`;
-      if(allStepsDone && hasRatings) {
-        html += `<button class="btn btn-success submit-btn" data-emp="${empId}"><i class="fas fa-check-circle"></i> Submit Appraisal</button>`;
-        html += `<span style="font-size:0.8rem;color:var(--success);">All stages complete! Ready to submit.</span>`;
+    const nextDisabled = !allRated || !prevDone || isSubmitted || localApproved[empId] || hasDispute(empId) || hasRecallRequest(empId);
+
+    const allParamsGloballyRated = assigned.every(ci => {
+      const baseIdx = PARAM_OFFSETS[ci];
+      return CATEGORIES[ci].params.every((_, pi) => (ratings[baseIdx + pi] || 0) > 0);
+    });
+
+    if(isEmployeeView && !isSubmitted && !localApproved[empId] && !hasDispute(empId) && !hasRecallRequest(empId)){
+      html += '<button class="btn btn-primary next-btn" data-step="' + catIdx + '"' + (nextDisabled ? ' disabled' : '') + '>' + (catIdx < CATEGORIES.length - 1 ? 'Save & Next' : 'Save & Complete') + ' <i class="fas fa-save"></i></button>';
+      if(allStepsDone && allParamsGloballyRated) {
+        html += '<button class="btn btn-success submit-btn" data-emp="' + empId + '"><i class="fas fa-check-circle"></i> Submit Appraisal</button>';
+        html += '<span style="font-size:0.8rem;color:var(--success);">All stages complete! Ready to submit.</span>';
       } else {
-        html += `<span style="font-size:0.8rem;color:var(--gray-500);">${allStepsDone ? 'Complete ratings to enable submit' : 'Complete all stages to submit'}</span>`;
+        html += '<span style="font-size:0.8rem;color:var(--gray-500);">' + (allStepsDone ? 'Complete ratings to enable submit' : 'Complete all stages to submit') + '</span>';
       }
-    } else if(!isEmployeeView && !isSubmitted && !localApproved[empId]){
-      html += `<button class="btn btn-warning hr-unsubmit-btn" data-emp="${empId}"><i class="fas fa-undo"></i> Unsubmit</button>`;
+    } else if(!isEmployeeView && !isSubmitted && !localApproved[empId] && !hasDispute(empId) && !hasRecallRequest(empId)){
+      html += '<button class="btn btn-warning hr-unsubmit-btn" data-emp="' + empId + '"><i class="fas fa-undo"></i> Unsubmit</button>';
     }
-    if((isSubmitted || localApproved[empId]) && !isEmployeeView){
-      html += `<span style="color:var(--success);font-weight:600"><i class="fas fa-check-circle"></i> ${localApproved[empId] ? 'Approved' : 'Submitted'}</span>`;
-      if(!localApproved[empId]){
-        html += `<button class="btn btn-warning unsubmit-btn" data-emp="${empId}"><i class="fas fa-undo"></i> Unsubmit</button>`;
+    if((isSubmitted || localApproved[empId] || hasDispute(empId) || hasRecallRequest(empId)) && !isEmployeeView){
+      html += '<span style="color:var(--success);font-weight:600"><i class="fas fa-check-circle"></i> ' + (localApproved[empId] ? 'Approved' : (hasRecallRequest(empId) ? 'Recall Req' : (hasDispute(empId) ? 'Disputed' : 'Submitted'))) + '</span>';
+      if(!localApproved[empId] && !hasDispute(empId) && !hasRecallRequest(empId)){
+        html += '<button class="btn btn-warning unsubmit-btn" data-emp="' + empId + '"><i class="fas fa-undo"></i> Unsubmit</button>';
       }
     }
     if(isEmployeeView){
-      html += `<button class="btn btn-outline btn-sm" id="employeeLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>`;
+      html += '<button class="btn btn-outline btn-sm" id="employeeLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>';
     }
-    html += `</div></div>`;
+    html += '</div></div>';
     stepArea.innerHTML = html;
 
     stepArea.querySelectorAll('.step-dot').forEach(el => {
@@ -1278,6 +1941,7 @@ tr:hover td{background:var(--gray-50)}
         const eid = this.dataset.emp;
         if(!localRatings[eid]) localRatings[eid] = Array(totalParams).fill(0);
         localRatings[eid][gi] = v;
+        localRecalled[eid] = false;   // any change clears "Recalled" status
         syncToCloud();
         renderStep(eid, catIdx, isEmployeeView);
         updateTopCard(eid);
@@ -1287,68 +1951,86 @@ tr:hover td{background:var(--gray-50)}
     });
 
     const nextBtn = stepArea.querySelector('.next-btn');
-    if(nextBtn){
-      nextBtn.addEventListener('click', function() {
-        const step = parseInt(this.dataset.step);
-        if(!localCompletion[empId]) localCompletion[empId] = Array(CATEGORIES.length).fill(false);
-        localCompletion[empId][step] = true;
-        syncToCloud();
-        const next = Math.min(step + 1, CATEGORIES.length - 1);
-        if(step < CATEGORIES.length - 1){ renderStep(empId, next, isEmployeeView); showToast('✅ Progress saved!', 'success'); }
-        else { renderStep(empId, step, isEmployeeView); showToast('✅ All stages completed!', 'success'); }
-        updateTopCard(empId);
-        if(!isEmployeeView){ renderHRTable(); renderAllTable(); }
-      });
-    }
+    if(nextBtn) nextBtn.addEventListener('click', function() {
+      const step = parseInt(this.dataset.step);
+      if(!localCompletion[empId]) localCompletion[empId] = Array(CATEGORIES.length).fill(false);
+      localCompletion[empId][step] = true;
+      localRecalled[empId] = false;
+      syncToCloud();
+      const next = Math.min(step + 1, CATEGORIES.length - 1);
+      if(step < CATEGORIES.length - 1){ renderStep(empId, next, isEmployeeView); showToast('✅ Progress saved!', 'success'); }
+      else { renderStep(empId, step, isEmployeeView); showToast('✅ All stages completed!', 'success'); }
+      updateTopCard(empId);
+      if(!isEmployeeView){ renderHRTable(); renderAllTable(); }
+    });
 
     const submitBtn = stepArea.querySelector('.submit-btn');
-    if(submitBtn){
-      submitBtn.addEventListener('click', function() {
-        if(!confirm('Submit this appraisal?')) return;
-        localSubmitted[empId] = true;
-        localSubmissionDates[empId] = Date.now();
-        syncToCloud();
-        renderSubmittedSummary(empId, true);
-        updateTopCard(empId);
-        if(!isEmployeeView){ renderHRTable(); renderAllTable(); }
-        showToast('✅ Appraisal submitted successfully!');
-      });
-    }
+    if(submitBtn) submitBtn.addEventListener('click', function() {
+      if(!confirm('Submit this appraisal?')) return;
+      localSubmitted[empId] = true;
+      localSubmissionDates[empId] = Date.now();
+      localCleared[empId] = false;
+      localRecalled[empId] = false;
+      syncToCloud();
+      renderSubmittedSummary(empId, true);
+      updateTopCard(empId);
+      if(!isEmployeeView){ renderHRTable(); renderAllTable(); }
+      showToast('✅ Appraisal submitted successfully!');
+    });
 
     const unsubmitBtn = stepArea.querySelector('.unsubmit-btn');
-    if(unsubmitBtn){
-      unsubmitBtn.addEventListener('click', function() {
-        if(!confirm('Unsubmit for editing?')) return;
-        localSubmitted[empId] = false;
-        localApproved[empId] = false;
-        delete localSubmissionDates[empId];
-        delete localApprovalDates[empId];
-        syncToCloud();
-        renderStep(empId, catIdx, isEmployeeView);
-        updateTopCard(empId);
-        if(!isEmployeeView){ renderHRTable(); renderAllTable(); }
-      });
-    }
+    if(unsubmitBtn) unsubmitBtn.addEventListener('click', function() {
+      if(!confirm('Unsubmit for editing?')) return;
+      localSubmitted[empId] = false;
+      localApproved[empId] = false;
+      delete localSubmissionDates[empId];
+      delete localApprovalDates[empId];
+      syncToCloud();
+      renderStep(empId, catIdx, isEmployeeView);
+      updateTopCard(empId);
+      if(!isEmployeeView){ renderHRTable(); renderAllTable(); }
+    });
 
     const hrUnsubmitBtn = stepArea.querySelector('.hr-unsubmit-btn');
-    if(hrUnsubmitBtn){
-      hrUnsubmitBtn.addEventListener('click', function() {
-        if(!confirm('Unsubmit this appraisal? The employee will be able to edit again.')) return;
-        localSubmitted[empId] = false;
-        localApproved[empId] = false;
-        delete localSubmissionDates[empId];
-        delete localApprovalDates[empId];
-        syncToCloud();
-        renderStep(empId, catIdx, isEmployeeView);
-        updateTopCard(empId);
-        renderHRTable(); renderAllTable();
-      });
-    }
+    if(hrUnsubmitBtn) hrUnsubmitBtn.addEventListener('click', function() {
+      if(!confirm('Unsubmit this appraisal? The employee will be able to edit again.')) return;
+      localSubmitted[empId] = false;
+      localApproved[empId] = false;
+      delete localSubmissionDates[empId];
+      delete localApprovalDates[empId];
+      syncToCloud();
+      renderStep(empId, catIdx, isEmployeeView);
+      updateTopCard(empId);
+      renderHRTable(); renderAllTable();
+    });
 
-    document.getElementById('employeeLogoutBtn')?.addEventListener('click', doLogout);
+    const clearBtn = document.getElementById('clearRatingsBtn');
+    if(clearBtn) clearBtn.addEventListener('click', function() {
+      const eid = this.dataset.emp;
+      const pwd = prompt("Enter your password to clear all ratings:");
+      if(!pwd) return;
+      const emp = localEmployees.find(e => e.id === eid);
+      if(!emp || emp.password !== pwd) {
+        alert('Incorrect password. Action cancelled.');
+        return;
+      }
+      if(!confirm('Are you sure you want to clear all ratings? This cannot be undone.')) return;
+      localRatings[eid] = Array(totalParams).fill(0);
+      localCompletion[eid] = Array(CATEGORIES.length).fill(false);
+      localCleared[eid] = false;
+      localRecalled[eid] = false;
+      syncToCloud();
+      renderStep(eid, catIdx, isEmployeeView);
+      updateTopCard(eid);
+      showToast('🗑️ All ratings cleared. Final Score & Rating are now blank.');
+    });
+
+    const empLogoutBtn = document.getElementById('employeeLogoutBtn');
+    if(empLogoutBtn) empLogoutBtn.addEventListener('click', doLogout);
   }
 
-  function openEmployee(empId, viewOnly = false){
+  function openEmployee(empId, viewOnly){
+    viewOnly = !!viewOnly;
     const assigned = localAssigned[empId] || [];
     const first = assigned.length ? assigned[0] : 0;
     document.getElementById('hrPane').style.display = 'none';
@@ -1356,15 +2038,19 @@ tr:hover td{background:var(--gray-50)}
     document.getElementById('allPane').style.display = 'none';
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     roleDisplay.innerHTML = '<i class="fas fa-user-tie"></i> HR Administrator';
-    if(viewOnly || localSubmitted[empId] || localApproved[empId]){ renderSubmittedSummary(empId, false, viewOnly); }
-    else { renderStep(empId, first, false); }
+    if(viewOnly || localSubmitted[empId] || localApproved[empId] || hasDispute(empId) || hasRecallRequest(empId) || localRecalled[empId]){
+      renderSubmittedSummary(empId, false, viewOnly);
+    } else {
+      renderStep(empId, first, false);
+    }
     updateTopCard(empId);
     stepArea.scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 
-  function employeeLogin(empId){
-    const emp = localEmployees.find(e => e.id === empId);
-    if(!emp) return;
+  function employeeLogin(empName){
+    const emp = localEmployees.find(e => e.name.toLowerCase() === empName.toLowerCase() || (e.displayName && e.displayName.toLowerCase() === empName.toLowerCase()));
+    if(!emp) return false;
+    currentUser = emp.id;
     hrTopBar.className = 'top-bar employee-mode';
     hrPane.className = 'employee-mode';
     employeesPane.className = 'employee-mode';
@@ -1372,12 +2058,16 @@ tr:hover td{background:var(--gray-50)}
     document.getElementById('hrPane').style.display = 'none';
     document.getElementById('employeesPane').style.display = 'none';
     document.getElementById('allPane').style.display = 'none';
-    roleDisplay.innerHTML = `<i class="fas fa-user-circle"></i> ${esc(emp.name)}`;
-    const assigned = localAssigned[empId] || [];
+    roleDisplay.innerHTML = '<i class="fas fa-user-circle"></i> ' + esc(emp.displayName || emp.name);
+    const assigned = localAssigned[emp.id] || [];
     const first = assigned.length ? assigned[0] : 0;
-    if(localSubmitted[empId] || localApproved[empId]){ renderSubmittedSummary(empId, true); }
-    else { renderStep(empId, first, true); }
-    updateTopCard(empId);
+    if(localSubmitted[emp.id] || localApproved[emp.id] || hasDispute(emp.id) || hasRecallRequest(emp.id) || localRecalled[emp.id]){
+      renderSubmittedSummary(emp.id, true);
+    } else {
+      renderStep(emp.id, first, true);
+    }
+    updateTopCard(emp.id);
+    return true;
   }
 
   function resetToHRView(){
@@ -1406,18 +2096,89 @@ tr:hover td{background:var(--gray-50)}
 
   function doLogout(){
     if(!confirm('Logout?')) return;
-    loginPage.style.display = 'block';
+    landingPage.style.display = 'block';
+    hrLoginPage.style.display = 'none';
+    empLoginPage.style.display = 'none';
     appContainer.style.display = 'none';
+    settingsMainPage.style.display = 'none';
+    settingsLimitsPage.style.display = 'none';
+    settingsPasswordPage.style.display = 'none';
+    settingsWeightsPage.style.display = 'none';
+    settingsAssignPage.style.display = 'none';
+    addEmpPage.style.display = 'none';
     loginPassword.value = '';
-    loginError.style.display = 'none';
+    loginErrorHr.style.display = 'none';
+    empLoginId.value = '';
+    empLoginPassword.value = '';
+    loginErrorEmp.style.display = 'none';
     isEmployeeMode = false;
     isViewOnlyMode = false;
     stepArea.innerHTML = '';
     stepArea.classList.remove('view-only');
     currentViewingEmp = null;
     ratingCard.className = 'rating-card';
-    currentUser = 'hr';
+    currentUser = 'none';
   }
+
+  document.getElementById('btnHrAdmin').addEventListener('click', () => {
+    landingPage.style.display = 'none';
+    hrLoginPage.style.display = 'block';
+  });
+  document.getElementById('btnEmpLogin').addEventListener('click', () => {
+    landingPage.style.display = 'none';
+    empLoginPage.style.display = 'block';
+  });
+  btnBackHr.addEventListener('click', () => {
+    hrLoginPage.style.display = 'none';
+    landingPage.style.display = 'block';
+  });
+  btnBackEmp.addEventListener('click', () => {
+    empLoginPage.style.display = 'none';
+    landingPage.style.display = 'block';
+  });
+
+  loginBtn.addEventListener('click', () => {
+    const pass = loginPassword.value.trim();
+    if(pass !== hrPassword){
+      loginErrorHr.style.display = 'block';
+      loginErrorHr.textContent = 'Incorrect HR password. Please try again.';
+      loginPassword.value = '';
+      return;
+    }
+    loginErrorHr.style.display = 'none';
+    loginPassword.value = '';
+    currentUser = 'hr';
+    hrLoginPage.style.display = 'none';
+    appContainer.style.display = 'block';
+    resetToHRView();
+  });
+  loginPassword.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ loginBtn.click(); } });
+
+  empLoginBtn.addEventListener('click', () => {
+    const name = empLoginId.value.trim();
+    const pass = empLoginPassword.value.trim();
+    if(!name || !pass) {
+      loginErrorEmp.style.display = 'block';
+      loginErrorEmp.textContent = 'Please enter Login ID and Password.';
+      return;
+    }
+    const emp = localEmployees.find(e => e.name.toLowerCase() === name.toLowerCase() || (e.displayName && e.displayName.toLowerCase() === name.toLowerCase()));
+    if(!emp || emp.password !== pass){
+      loginErrorEmp.style.display = 'block';
+      loginErrorEmp.textContent = 'Invalid Login ID or Password.';
+      empLoginPassword.value = '';
+      return;
+    }
+    loginErrorEmp.style.display = 'none';
+    empLoginId.value = '';
+    empLoginPassword.value = '';
+    empLoginPage.style.display = 'none';
+    appContainer.style.display = 'block';
+    employeeLogin(emp.name);
+  });
+  empLoginPassword.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ empLoginBtn.click(); } });
+
+  logoutBtn.addEventListener('click', doLogout);
 
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -1450,34 +2211,504 @@ tr:hover td{background:var(--gray-50)}
     });
   });
 
+  roleDisplay.addEventListener('click', () => {
+    if(currentUser === 'hr') {
+      openSettingsMain();
+    } else {
+      const empId = currentUser;
+      const emp = localEmployees.find(e => e.id === empId);
+      if(!emp) return;
+      const current = prompt('Enter CURRENT password to verify:');
+      if(!current) return;
+      if(current !== emp.password) { alert('Incorrect current password.'); return; }
+      const newPass = prompt('Enter NEW password:');
+      if(!newPass) return;
+      const confirmPass = prompt('Confirm NEW password:');
+      if(newPass !== confirmPass) { alert('Passwords do not match.'); return; }
+      emp.password = newPass;
+      syncToCloud();
+      alert('Password updated successfully!');
+    }
+  });
+
+  function openSettingsMain() {
+    appContainer.style.display = 'none';
+    settingsMainPage.style.display = 'block';
+  }
+  exitSettingsBtn.addEventListener('click', () => {
+    settingsMainPage.style.display = 'none';
+    appContainer.style.display = 'block';
+  });
+  document.getElementById('goToLimits').addEventListener('click', () => {
+    settingsMainPage.style.display = 'none';
+    settingsLimitsPage.style.display = 'block';
+    setMaxDisputes.value = systemSettings.maxDisputes;
+    setMaxRecalls.value = systemSettings.maxRecalls;
+  });
+  backFromLimits.addEventListener('click', () => {
+    settingsLimitsPage.style.display = 'none';
+    settingsMainPage.style.display = 'block';
+  });
+  document.getElementById('goToChangePassword').addEventListener('click', () => {
+    settingsMainPage.style.display = 'none';
+    settingsPasswordPage.style.display = 'block';
+    currentHrPass.value = ''; newHrPass.value = ''; confirmHrPass.value = '';
+  });
+  backFromPassword.addEventListener('click', () => {
+    settingsPasswordPage.style.display = 'none';
+    settingsMainPage.style.display = 'block';
+  });
+
+  function buildWeightTableHTML() {
+    let html = '';
+    CATEGORIES.forEach((cat, ci) => {
+      html += '<tr class="cat-row" data-cat-row="' + ci + '">';
+      html += '<td class="col-no">' + (ci + 1) + '</td>';
+      html += '<td>' + esc(cat.name) + '</td>';
+      html += '<td class="col-weight"><input type="number" class="cat-weight-input" data-ci="' + ci + '" value="' + cat.weight + '" min="0" max="100" step="0.25" /><span class="pct-sign">%</span></td>';
+      html += '</tr>';
+      cat.params.forEach((p, pi) => {
+        html += '<tr class="param-row" data-param-row="' + ci + '-' + pi + '">';
+        html += '<td class="col-no">' + (ci + 1) + '.' + (pi + 1) + '</td>';
+        html += '<td class="col-criteria">' + esc(p.name) + '</td>';
+        html += '<td class="col-weight"><input type="number" class="param-weight-input" data-ci="' + ci + '" data-pi="' + pi + '" value="' + p.weight + '" min="0" max="100" step="0.25" /><span class="pct-sign">%</span></td>';
+        html += '</tr>';
+      });
+    });
+    const total = CATEGORIES.reduce((s, c) => s + c.weight, 0);
+    html += '<tr class="total-row"><td colspan="2">TOTAL WEIGHTAGE</td><td class="col-weight"><span id="grandTotalInline" style="font-size:1rem;">' + total.toFixed(2) + '%</span></td></tr>';
+    return html;
+  }
+
+  function refreshGrandTotalDisplay() {
+    const total = CATEGORIES.reduce((s, c) => s + c.weight, 0);
+    if (grandTotalDisplay) {
+      grandTotalDisplay.textContent = total.toFixed(2) + '%';
+      grandTotalDisplay.className = Math.abs(total - 100) < 0.01 ? 'total-ok' : 'total-bad';
+    }
+    const inlineEl = document.getElementById('grandTotalInline');
+    if (inlineEl) inlineEl.textContent = total.toFixed(2) + '%';
+  }
+
+  function renderWeightTable() {
+    weightTableBody.innerHTML = buildWeightTableHTML();
+    refreshGrandTotalDisplay();
+  }
+
+  document.getElementById('goToWeights').addEventListener('click', () => {
+    settingsMainPage.style.display = 'none';
+    settingsWeightsPage.style.display = 'block';
+    renderWeightTable();
+  });
+  backFromWeights.addEventListener('click', () => {
+    settingsWeightsPage.style.display = 'none';
+    settingsMainPage.style.display = 'block';
+  });
+
+  weightTableBody.addEventListener('input', (e) => {
+    const paramInput = e.target.closest('.param-weight-input');
+    if (paramInput) {
+      const ci = parseInt(paramInput.dataset.ci);
+      const pi = parseInt(paramInput.dataset.pi);
+      const cat = CATEGORIES[ci];
+      if (!cat) return;
+      let newVal = parseFloat(paramInput.value);
+      if (isNaN(newVal)) newVal = 0;
+      newVal = Math.max(0, Math.min(cat.weight, newVal));
+      const oldVal = cat.params[pi].weight;
+      if (Math.abs(newVal - oldVal) < 0.0001) return;
+      const diff = newVal - oldVal;
+      let totalOthers = 0;
+      cat.params.forEach((p, i) => { if (i !== pi) totalOthers += p.weight; });
+      if (totalOthers > 0) {
+        cat.params.forEach((p, i) => {
+          if (i === pi) return;
+          const ratio = p.weight / totalOthers;
+          let adj = +(diff * ratio).toFixed(4);
+          p.weight = Math.max(0, +(p.weight - adj).toFixed(4));
+        });
+      }
+      cat.params[pi].weight = +newVal.toFixed(4);
+      let sum = cat.params.reduce((s, p) => s + p.weight, 0);
+      let error = +(cat.weight - sum).toFixed(4);
+      if (Math.abs(error) > 0.0001) {
+        for (let i = 0; i < cat.params.length; i++) {
+          if (i !== pi) { cat.params[i].weight = Math.max(0, +(cat.params[i].weight + error).toFixed(4)); break; }
+        }
+      }
+      renderWeightTable();
+      return;
+    }
+    const catInput = e.target.closest('.cat-weight-input');
+    if (catInput) {
+      const ci = parseInt(catInput.dataset.ci);
+      let newVal = parseFloat(catInput.value);
+      if (isNaN(newVal)) newVal = 0;
+      newVal = Math.max(0, Math.min(100, newVal));
+      const oldVal = CATEGORIES[ci].weight;
+      if (Math.abs(newVal - oldVal) < 0.0001) return;
+      const diff = newVal - oldVal;
+      let totalOthers = 0;
+      CATEGORIES.forEach((c, i) => { if (i !== ci) totalOthers += c.weight; });
+      if (totalOthers > 0) {
+        CATEGORIES.forEach((c, i) => {
+          if (i === ci) return;
+          const ratio = c.weight / totalOthers;
+          let adj = +(diff * ratio).toFixed(4);
+          c.weight = Math.max(0, +(c.weight - adj).toFixed(4));
+        });
+      }
+      CATEGORIES[ci].weight = +newVal.toFixed(4);
+      let sum = CATEGORIES.reduce((s, c) => s + c.weight, 0);
+      let error = +(100 - sum).toFixed(4);
+      if (Math.abs(error) > 0.0001) {
+        for (let i = 0; i < CATEGORIES.length; i++) {
+          if (i !== ci) { CATEGORIES[i].weight = Math.max(0, +(CATEGORIES[i].weight + error).toFixed(4)); break; }
+        }
+      }
+      const editedCat = CATEGORIES[ci];
+      const paramSum = editedCat.params.reduce((s, p) => s + p.weight, 0);
+      if (paramSum > 0 && Math.abs(paramSum - editedCat.weight) > 0.0001) {
+        const scale = editedCat.weight / paramSum;
+        editedCat.params.forEach(p => { p.weight = +(p.weight * scale).toFixed(4); });
+      }
+      renderWeightTable();
+      return;
+    }
+  });
+
+  weightTableBody.addEventListener('blur', (e) => {
+    if (e.target.matches('.cat-weight-input, .param-weight-input')) {
+      renderWeightTable();
+    }
+  }, true);
+
+  saveCatWeightsBtn.addEventListener('click', () => {
+    const total = CATEGORIES.reduce((s, c) => s + c.weight, 0);
+    if (Math.abs(total - 100) > 0.01) {
+      alert('Grand total is ' + total.toFixed(2) + '%. It must equal exactly 100%. Please adjust.');
+      return;
+    }
+    for (let ci = 0; ci < CATEGORIES.length; ci++) {
+      const cat = CATEGORIES[ci];
+      const paramSum = cat.params.reduce((s, p) => s + p.weight, 0);
+      if (Math.abs(paramSum - cat.weight) > 0.05) {
+        alert('"' + cat.name + '": parameter weights sum to ' + paramSum.toFixed(2) + '% but the category weight is ' + cat.weight.toFixed(2) + '%. Please adjust.');
+        return;
+      }
+    }
+    CATEGORIES.forEach(cat => {
+      const paramSum = cat.params.reduce((s, p) => s + p.weight, 0);
+      if (paramSum > 0) {
+        const scale = cat.weight / paramSum;
+        cat.params.forEach(p => { p.weight = +(p.weight * scale).toFixed(4); });
+      }
+    });
+    PARAM_OFFSETS = buildParamOffsets();
+    totalParams = totalParamsCount();
+    syncToCloud();
+    showToast('✅ Category & parameter weights updated!');
+    settingsWeightsPage.style.display = 'none';
+    settingsMainPage.style.display = 'block';
+  });
+
+  function getAssignSelection(empId) {
+    if (!localAssignSelection[empId]) {
+      const defaultSelected = (localAssigned[empId] && localAssigned[empId].length)
+        ? localAssigned[empId].slice()
+        : CATEGORIES.map((_, i) => i);
+      localAssignSelection[empId] = { selectedCats: defaultSelected, deselectedParams: {} };
+    }
+    return localAssignSelection[empId];
+  }
+
+  function computeAssignWeights(empId) {
+    const sel = getAssignSelection(empId);
+    const result = [];
+    CATEGORIES.forEach((cat, ci) => {
+      const catSelected = sel.selectedCats.includes(ci);
+      const deselected = sel.deselectedParams[ci] || [];
+      const selectedParams = cat.params.filter((_, pi) => !deselected.includes(pi));
+      const totalSelectedBase = selectedParams.reduce((s, p) => s + p.weight, 0);
+      cat.params.forEach((p, pi) => {
+        const isSel = catSelected && !deselected.includes(pi);
+        let eff = 0;
+        if (isSel && totalSelectedBase > 0) {
+          eff = (p.weight / totalSelectedBase) * cat.weight;
+        }
+        result.push({ ci, pi, name: p.name, baseWeight: p.weight, effectiveWeight: +eff.toFixed(4), selected: isSel, categorySelected: catSelected });
+      });
+    });
+    return result;
+  }
+
+  function buildAssignTableHTML(empId) {
+    const weights = computeAssignWeights(empId);
+    const sel = getAssignSelection(empId);
+    let html = '';
+    CATEGORIES.forEach((cat, ci) => {
+      const catSelected = sel.selectedCats.includes(ci);
+      const catTotalEff = weights.filter(w => w.ci === ci).reduce((sum, w) => sum + w.effectiveWeight, 0);
+      html += '<tr class="cat-row" data-cat-row="' + ci + '">';
+      html += '<td class="col-no">' + (ci + 1) + '</td>';
+      html += '<td class="col-criteria">' + esc(cat.name) + '</td>';
+      html += '<td class="col-base">' + cat.weight.toFixed(2) + '%</td>';
+      html += '<td class="col-check"><input type="checkbox" class="assign-cat-checkbox" data-ci="' + ci + '" data-emp="' + empId + '"' + (catSelected ? ' checked' : '') + ' /></td>';
+      html += '<td class="col-weight ' + (catSelected ? 'rebalanced' : 'zero') + '">' + (catSelected ? catTotalEff.toFixed(2) + '%' : '—') + '</td>';
+      html += '</tr>';
+      cat.params.forEach((p, pi) => {
+        const w = weights.find(x => x.ci === ci && x.pi === pi);
+        const isSel = w.selected;
+        const eff = w.effectiveWeight;
+        const isRebalanced = isSel && Math.abs(eff - p.weight) > 0.01;
+        const rowClass = isSel ? 'param-row' : 'param-row deselected';
+        html += '<tr class="' + rowClass + '" data-param-row="' + ci + '-' + pi + '">';
+        html += '<td class="col-no">' + (ci + 1) + '.' + (pi + 1) + '</td>';
+        html += '<td class="col-criteria">' + esc(p.name) + '</td>';
+        html += '<td class="col-base">' + p.weight.toFixed(2) + '%</td>';
+        html += '<td class="col-check"><input type="checkbox" class="assign-param-checkbox" data-ci="' + ci + '" data-pi="' + pi + '" data-emp="' + empId + '"' + (isSel ? ' checked' : '') + ' /></td>';
+        html += '<td class="col-weight ' + (isSel ? (isRebalanced ? 'rebalanced' : '') : 'zero') + '">' + (isSel ? eff.toFixed(2) + '%' : '—') + '</td>';
+        html += '</tr>';
+      });
+    });
+    const totalEff = weights.reduce((sum, w) => sum + w.effectiveWeight, 0);
+    const totalBase = CATEGORIES.reduce((s, c) => s + c.weight, 0);
+    const isOk = Math.abs(totalEff - 100) < 0.01;
+    html += '<tr class="total-row">';
+    html += '<td colspan="2" style="text-align:right; padding-right:12px;">TOTAL WEIGHTAGE</td>';
+    html += '<td class="col-base">' + totalBase.toFixed(2) + '%</td>';
+    html += '<td></td>';
+    html += '<td class="col-total" style="color:' + (isOk ? 'var(--success)' : 'var(--danger)') + ';">' + totalEff.toFixed(2) + '%</td>';
+    html += '</tr>';
+    return html;
+  }
+
+  function renderAssignTable(empId) {
+    assignCurrentEmpId = empId;
+    assignTableBody.innerHTML = buildAssignTableHTML(empId);
+  }
+
+  document.getElementById('goToAssign').addEventListener('click', () => {
+    settingsMainPage.style.display = 'none';
+    settingsAssignPage.style.display = 'block';
+    assignEmpSelect.innerHTML = '<option value="">-- Select Employee --</option>';
+    localEmployees.forEach(emp => {
+      const opt = document.createElement('option');
+      opt.value = emp.id;
+      opt.textContent = emp.displayName || emp.name;
+      assignEmpSelect.appendChild(opt);
+    });
+    assignCatContainer.style.display = 'none';
+    assignCurrentEmpId = null;
+  });
+  backFromAssign.addEventListener('click', () => {
+    settingsAssignPage.style.display = 'none';
+    settingsMainPage.style.display = 'block';
+    assignCurrentEmpId = null;
+  });
+  assignEmpSelect.addEventListener('change', function() {
+    const empId = this.value;
+    if (!empId) { assignCatContainer.style.display = 'none'; assignCurrentEmpId = null; return; }
+    assignCatContainer.style.display = 'block';
+    renderAssignTable(empId);
+  });
+
+  assignTableBody.addEventListener('change', (e) => {
+    if (!assignCurrentEmpId) return;
+    const empId = assignCurrentEmpId;
+    const sel = getAssignSelection(empId);
+
+    const catCheckbox = e.target.closest('.assign-cat-checkbox');
+    if (catCheckbox) {
+      const ci = parseInt(catCheckbox.dataset.ci);
+      const isChecked = catCheckbox.checked;
+      let selCats = sel.selectedCats.slice();
+      if (isChecked) {
+        if (!selCats.includes(ci)) selCats.push(ci);
+        delete sel.deselectedParams[ci];
+      } else {
+        selCats = selCats.filter(x => x !== ci);
+        delete sel.deselectedParams[ci];
+      }
+      selCats.sort((a, b) => a - b);
+      sel.selectedCats = selCats;
+      syncToCloud();
+      renderAssignTable(empId);
+      showToast('✅ Selection updated & weights rebalanced!');
+      return;
+    }
+
+    const paramCheckbox = e.target.closest('.assign-param-checkbox');
+    if (paramCheckbox) {
+      const ci = parseInt(paramCheckbox.dataset.ci);
+      const pi = parseInt(paramCheckbox.dataset.pi);
+      const isChecked = paramCheckbox.checked;
+      let selCats = sel.selectedCats.slice();
+      if (!selCats.includes(ci)) selCats.push(ci);
+      sel.selectedCats = selCats.sort((a, b) => a - b);
+      if (!sel.deselectedParams[ci]) sel.deselectedParams[ci] = [];
+      let deselected = sel.deselectedParams[ci].slice();
+      if (isChecked) {
+        const idx = deselected.indexOf(pi);
+        if (idx >= 0) deselected.splice(idx, 1);
+      } else {
+        if (!deselected.includes(pi)) deselected.push(pi);
+      }
+      const allDeselected = CATEGORIES[ci].params.every((_, i) => deselected.includes(i));
+      if (allDeselected) {
+        sel.selectedCats = sel.selectedCats.filter(x => x !== ci);
+        delete sel.deselectedParams[ci];
+      } else {
+        sel.deselectedParams[ci] = deselected;
+      }
+      syncToCloud();
+      renderAssignTable(empId);
+      showToast('✅ Selection updated & weights rebalanced!');
+      return;
+    }
+  });
+
+  saveLimitsBtn.addEventListener('click', () => {
+    const newMaxDisputes = parseInt(setMaxDisputes.value);
+    const newMaxRecalls = parseInt(setMaxRecalls.value);
+    if(isNaN(newMaxDisputes) || isNaN(newMaxRecalls) || newMaxDisputes < 0 || newMaxRecalls < 0) {
+      alert('Please enter valid positive numbers.');
+      return;
+    }
+    systemSettings.maxDisputes = newMaxDisputes;
+    systemSettings.maxRecalls = newMaxRecalls;
+    syncToCloud();
+    showToast('✅ Limits saved successfully!');
+    settingsLimitsPage.style.display = 'none';
+    settingsMainPage.style.display = 'block';
+  });
+
+  saveHrPassBtn.addEventListener('click', () => {
+    if(currentHrPass.value !== hrPassword) { alert('Incorrect current password.'); return; }
+    if(newHrPass.value !== confirmHrPass.value) { alert('New passwords do not match.'); return; }
+    if(!newHrPass.value) { alert('New password cannot be empty.'); return; }
+    hrPassword = newHrPass.value;
+    syncToCloud();
+    alert('HR Password updated successfully!');
+    settingsPasswordPage.style.display = 'none';
+    settingsMainPage.style.display = 'block';
+  });
+
+  function renderExcelRow() {
+    const tr = document.createElement('tr');
+    tr.className = 'excel-row';
+    tr.dataset.rowId = excelRowCounter++;
+    tr.innerHTML = '<td><input type="text" class="excel-name" placeholder="Enter Name" /></td>' +
+      '<td><input type="text" class="excel-dept" placeholder="General" value="General" /></td>' +
+      '<td><input type="text" class="excel-company" placeholder="General" value="General" /></td>' +
+      '<td><input type="text" class="excel-loginid" readonly placeholder="Auto" /></td>' +
+      '<td><input type="text" class="excel-pass" readonly placeholder="Auto" /></td>' +
+      '<td style="text-align:center;"><button class="row-delete-btn" title="Remove Row"><i class="fas fa-times-circle"></i></button></td>';
+
+    const nameInput = tr.querySelector('.excel-name');
+    const loginIdInput = tr.querySelector('.excel-loginid');
+    const passInput = tr.querySelector('.excel-pass');
+    nameInput.addEventListener('input', function() {
+      const val = this.value.trim();
+      if(val) { loginIdInput.value = generateLoginId(val); passInput.value = genPassword(val); }
+      else { loginIdInput.value = ''; passInput.value = ''; }
+    });
+    tr.querySelector('.row-delete-btn').addEventListener('click', function() {
+      if(document.querySelectorAll('.excel-row').length > 1) { tr.remove(); }
+      else {
+        nameInput.value = ''; loginIdInput.value = ''; passInput.value = '';
+        tr.querySelector('.excel-dept').value = 'General';
+        tr.querySelector('.excel-company').value = 'General';
+      }
+    });
+    excelAddBody.appendChild(tr);
+    nameInput.focus();
+  }
+
+  empNew.addEventListener('click', () => {
+    appContainer.style.display = 'none';
+    addEmpPage.style.display = 'block';
+    excelAddBody.innerHTML = '';
+    excelRowCounter = 0;
+    renderExcelRow();
+  });
+  backFromAddEmp.addEventListener('click', () => {
+    addEmpPage.style.display = 'none';
+    appContainer.style.display = 'block';
+  });
+  addRowBtn.addEventListener('click', renderExcelRow);
+
+  saveNewEmpsBtn.addEventListener('click', () => {
+    const rows = document.querySelectorAll('.excel-row');
+    let savedCount = 0;
+    let hasError = false;
+    const newEmpsData = [];
+    for(let row of rows) {
+      const name = row.querySelector('.excel-name').value.trim();
+      if(!name) continue;
+      const loginId = row.querySelector('.excel-loginid').value;
+      const password = row.querySelector('.excel-pass').value;
+      const dept = row.querySelector('.excel-dept').value.trim() || 'General';
+      const company = row.querySelector('.excel-company').value.trim() || 'General';
+      if(localEmployees.some(e => e.name.toLowerCase() === loginId.toLowerCase())) {
+        alert('Login ID "' + loginId + '" already exists in the system.'); hasError = true; break;
+      }
+      if(localEmployees.some(e => (e.password || '').toLowerCase() === password.toLowerCase())) {
+        alert('Password "' + password + '" is already assigned to another employee.'); hasError = true; break;
+      }
+      newEmpsData.push({ name, loginId, password, dept, company });
+    }
+    if(hasError) return;
+    if(newEmpsData.length === 0) { alert('No valid entries to save. Please fill in at least one Name.'); return; }
+    if(confirm('Save ' + newEmpsData.length + ' employee(s)?')) {
+      newEmpsData.forEach(data => {
+        const id = 'emp' + (Date.now()) + '_' + Math.floor(Math.random()*1000);
+        localEmployees.push({ id: id, name: data.loginId, displayName: data.name, department: data.dept, businessUnit: data.company, password: data.password });
+        localRatings[id] = Array(totalParams).fill(0);
+        localCompletion[id] = Array(CATEGORIES.length).fill(false);
+        localSubmitted[id] = false;
+        localAssigned[id] = CATEGORIES.map((_, i) => i);
+        localHrRatings[id] = Array(totalParams).fill(0);
+        localApproved[id] = false;
+        localDisputes[id] = {};
+        localRecallRequests[id] = null;
+        localDisputeCounts[id] = 0;
+        localRecallCounts[id] = 0;
+        localCleared[id] = false;
+        localRecalled[id] = false;
+        savedCount++;
+      });
+      syncToCloud();
+      renderEmployeeList();
+      renderHRTable();
+      renderAllTable();
+      showToast('✅ ' + savedCount + ' employee(s) saved successfully!');
+      addEmpPage.style.display = 'none';
+      appContainer.style.display = 'block';
+      document.querySelector('[data-tab="employees"]').click();
+    }
+  });
+
   document.addEventListener('click', (e) => {
     const viewBtn = e.target.closest('.view-btn');
-    if(viewBtn){ 
+    if(viewBtn){
       const empId = viewBtn.dataset.id;
       const isViewOnly = viewBtn.closest('#allPane') !== null;
-      openEmployee(empId, isViewOnly); 
-      return; 
+      openEmployee(empId, isViewOnly);
+      return;
     }
     const deleteBtn = e.target.closest('.delete-emp-btn');
     if(deleteBtn){ deleteEmployee(deleteBtn.dataset.id); return; }
-    const assignBtn = e.target.closest('.assign-cat-btn');
-    if(assignBtn){ currentSelectedEmp = assignBtn.dataset.id; renderCategoryAssignment(assignBtn.dataset.id); return; }
-    const cancelCatBtn = e.target.closest('.cancel-cat-btn');
-    if(cancelCatBtn){
-      const row = document.querySelector(`tr[data-emp-cat="${cancelCatBtn.dataset.emp}"]`);
-      if(row) row.remove();
-      renderEmployeeList();
-      return;
-    }
     const editBtn = e.target.closest('.edit-emp-btn');
     if(editBtn){ editingEmpId = editBtn.dataset.id; renderEmployeeList(); return; }
     const regenBtn = e.target.closest('.regen-pass-btn');
     if(regenBtn){
       const id = regenBtn.dataset.id;
-      const newPass = genPassword();
-      const input = document.getElementById(`editPass_${id}`);
+      const emp = localEmployees.find(e => e.id === id);
+      const newPass = genPassword(emp ? emp.name : 'A');
+      const input = document.getElementById('editPass_' + id);
       if(input) input.value = newPass;
-      showToast(`🔑 New password generated: ${newPass}`, 'success');
+      showToast('🔑 New password: ' + newPass, 'success');
       return;
     }
     const saveEditBtn = e.target.closest('.save-edit-btn');
@@ -1485,89 +2716,67 @@ tr:hover td{background:var(--gray-50)}
       const id = saveEditBtn.dataset.id;
       const emp = localEmployees.find(e => e.id === id);
       if(!emp) return;
-      const name = document.getElementById(`editName_${id}`)?.value || emp.name;
-      const dept = document.getElementById(`editDept_${id}`)?.value || emp.department;
-      const bu = document.getElementById(`editBU_${id}`)?.value || emp.businessUnit;
-      const rep = document.getElementById(`editRep_${id}`)?.value || emp.reporting;
-      const pass = document.getElementById(`editPass_${id}`)?.value.trim() || emp.password;
-      emp.name = name; emp.department = dept; emp.businessUnit = bu; emp.reporting = rep; emp.password = pass;
+      const newName = document.getElementById('editName_' + id)?.value.trim() || emp.name;
+      const newDept = document.getElementById('editDept_' + id)?.value.trim() || emp.department;
+      const newBU = document.getElementById('editBU_' + id)?.value.trim() || emp.businessUnit;
+      const newPass = document.getElementById('editPass_' + id)?.value.trim() || emp.password;
+      if(newName !== emp.name && localEmployees.some(e => e.id !== id && e.name.toLowerCase() === newName.toLowerCase())) {
+        alert('Login ID "' + newName + '" is already taken by another employee.'); return;
+      }
+      if(newPass !== emp.password && localEmployees.some(e => e.id !== id && (e.password||'').toLowerCase() === newPass.toLowerCase())) {
+        alert('Password "' + newPass + '" is already assigned to another employee.'); return;
+      }
+      emp.name = newName; emp.department = newDept; emp.businessUnit = newBU; emp.password = newPass;
       syncToCloud();
       editingEmpId = null;
-      renderEmployeeList();
-      renderHRTable();
-      renderAllTable();
-      populateLogin();
+      renderEmployeeList(); renderHRTable(); renderAllTable();
       showToast('✅ Employee updated successfully!');
       return;
     }
     const cancelEditBtn = e.target.closest('.cancel-edit-btn');
     if(cancelEditBtn){ editingEmpId = null; renderEmployeeList(); return; }
+
     const approveBtn = e.target.closest('.approve-btn');
     if(approveBtn){
       const id = approveBtn.dataset.id;
       if(!confirm('Approve this appraisal?')) return;
       localApproved[id] = true;
       localApprovalDates[id] = Date.now();
+      localDisputes[id] = {};
+      localRecalled[id] = false;
       syncToCloud();
-      renderAllTable();
-      renderHRTable();
+      renderAllTable(); renderHRTable();
       showToast('✅ Appraisal approved successfully!');
       return;
     }
+
+    const clearDataBtn = e.target.closest('.clear-data-btn');
+    if(clearDataBtn){ clearEmployeeData(clearDataBtn.dataset.id); return; }
   });
 
   hrSearch.addEventListener('input', renderHRTable);
   empSearch.addEventListener('input', renderEmployeeList);
   allSearch.addEventListener('input', renderAllTable);
-
-  empNew.addEventListener('click', () => {
-    const name = prompt('Employee full name:'); if(!name) return;
-    const dept = prompt('Department:', 'General') || 'General';
-    const bu = prompt('Business Unit:', 'General') || 'General';
-    const rep = prompt('Reporting manager:', 'Manager') || 'Manager';
-    const id = 'emp' + (Date.now());
-    const password = genPassword();
-    localEmployees.push({id, name, department: dept, businessUnit: bu, reporting: rep, password});
-    localRatings[id] = Array(totalParams).fill(0);
-    localCompletion[id] = Array(CATEGORIES.length).fill(false);
-    localSubmitted[id] = false;
-    localAssigned[id] = CATEGORIES.map((_, i) => i);
-    localHrRatings[id] = Array(totalParams).fill(0);
-    localApproved[id] = false;
-    syncToCloud();
-    populateLogin();
-    renderEmployeeList();
-    renderHRTable();
-    renderAllTable();
-    showToast(`✅ Employee added! Password: ${password}`, 'success');
-    setTimeout(() => {
-      alert(`Employee "${name}" has been created.\n\n🔑 Login Password: ${password}\n\nPlease share this with the employee.\nHR can edit this password anytime from the Employees tab.`);
-    }, 300);
-  });
+  hrSortSelect.addEventListener('change', renderHRTable);
+  empSortSelect.addEventListener('change', renderEmployeeList);
+  allSortSelect.addEventListener('change', renderAllTable);
 
   exportCsvBtn.addEventListener('click', () => {
-    const header = ['Name', 'Department', 'Business Unit', 'Reporting', 'Password'];
-    const params = []; CATEGORIES.forEach(c => c.params.forEach(p => params.push(p)));
-    const cols = header.concat(params, ['Final Score', 'Final Rating', 'Status', 'Submitted Date', 'Approved Date']);
+    const header = ['Name', 'Department', 'Company', 'Password'];
+    const paramNames = [];
+    CATEGORIES.forEach(c => c.params.forEach(p => paramNames.push(p.name)));
+    const cols = header.concat(paramNames, ['Final Score', 'Final Rating', 'Status', 'Submitted Date', 'Approved Date']);
     const rows = [cols];
     localEmployees.forEach(emp => {
       const r = localRatings[emp.id] || Array(totalParams).fill(0);
       const res = computeFinal(emp.id);
-      let status = 'Not started';
-      if(localApproved[emp.id]) status = 'Approved';
-      else if(localSubmitted[emp.id]) status = 'Submitted';
-      else if(localCompletion[emp.id] && localCompletion[emp.id].some(v=>v)) {
-        const progress = getProgress(emp.id);
-        const completedCount = getCompletedCount(emp.id);
-        const assignedCount = (localAssigned[emp.id] || []).length;
-        if(progress === 100 && completedCount === assignedCount && assignedCount > 0) { status = 'Completed'; }
-        else { status = 'In progress (' + progress + '%)'; }
-      }
+      const status = getFilterStatus(emp.id);
       const subDate = localSubmissionDates[emp.id] ? formatDate(localSubmissionDates[emp.id]) : '';
       const appDate = localApprovalDates[emp.id] ? formatDate(localApprovalDates[emp.id]) : '';
-      const row = [emp.name, emp.department, emp.businessUnit, emp.reporting, emp.password || '']
+      const hasScore = res.totalActiveWeight > 0 && res.score > 0;
+      const row = [emp.displayName || emp.name, emp.department, emp.businessUnit, emp.password || '']
         .concat(r.map(v => v || ''))
-        .concat([res.score ? res.score.toFixed(2) : '', res.score ? overallLabel(res.score) : '', status, subDate, appDate]);
+        .concat([hasScore ? res.score.toFixed(2) : '', hasScore ? overallLabel(res.score) : '', status, subDate, appDate]);
       rows.push(row);
     });
     const csv = rows.map(r => r.map(c => {
@@ -1586,68 +2795,28 @@ tr:hover td{background:var(--gray-50)}
 
   hrRefreshBtn.addEventListener('click', () => { renderTop5(); renderHRTable(); });
 
-  function populateLogin(){
-    loginSelect.innerHTML = '<option value="hr">👤 HR Administrator</option>';
-    let migrated = false;
-    localEmployees.forEach(e => {
-      if(!e.password){ e.password = genPassword(); migrated = true; }
-      const opt = document.createElement('option');
-      opt.value = e.id;
-      opt.textContent = e.name + ' — ' + e.department + ' (' + e.businessUnit + ')';
-      loginSelect.appendChild(opt);
-    });
-    if(migrated) syncToCloud();
-  }
-
-  loginBtn.addEventListener('click', () => {
-    const val = loginSelect.value;
-    const pass = loginPassword.value.trim();
-    if(!val){ loginError.style.display = 'block'; loginError.textContent = 'Please select a user.'; return; }
-    if(!pass){ loginError.style.display = 'block'; loginError.textContent = 'Please enter your password.'; return; }
-    if(val === 'hr'){
-      if(pass !== HR_PASSWORD){
-        loginError.style.display = 'block';
-        loginError.textContent = 'Incorrect HR password. Please try again.';
-        loginPassword.value = '';
-        return;
-      }
-    } else {
-      const emp = localEmployees.find(e => e.id === val);
-      if(!emp || emp.password !== pass){
-        loginError.style.display = 'block';
-        loginError.textContent = 'Incorrect password for this employee. Please try again.';
-        loginPassword.value = '';
-        return;
-      }
-    }
-    loginError.style.display = 'none';
-    loginPassword.value = '';
-    currentUser = val;
-    loginPage.style.display = 'none';
-    appContainer.style.display = 'block';
-    if(val === 'hr'){ resetToHRView(); }
-    else { employeeLogin(val); }
-  });
-
-  loginPassword.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter'){ loginBtn.click(); }
-  });
-
-  logoutBtn.addEventListener('click', doLogout);
-
   const defaultEmployees = [
-    { id:'emp1', name:'Employee 1', department:'Engineering', businessUnit:'Product Development', reporting:'Manager A', password:'123456' },
-    { id:'emp2', name:'Employee 2', department:'Sales', businessUnit:'Commercial', reporting:'Manager B', password:'234567' },
-    { id:'emp3', name:'Employee 3', department:'HR', businessUnit:'Corporate', reporting:'Director HR', password:'345678' },
-    { id:'emp4', name:'Employee 4', department:'Product', businessUnit:'Product Development', reporting:'Head Product', password:'456789' },
-    { id:'emp5', name:'Employee 5', department:'Support', businessUnit:'Operations', reporting:'Manager C', password:'567890' },
-    { id:'emp6', name:'Employee 6', department:'Engineering', businessUnit:'Product Development', reporting:'Manager A', password:'678901' },
-    { id:'emp7', name:'Employee 7', department:'Marketing', businessUnit:'Commercial', reporting:'Manager D', password:'789012' }
+    { id:'emp1', name:'Employee 1', displayName:'Employee 1', department:'Engineering', businessUnit:'Product Development', password:'E1234' },
+    { id:'emp2', name:'Employee 2', displayName:'Employee 2', department:'Sales', businessUnit:'Commercial', password:'E2345' },
+    { id:'emp3', name:'Employee 3', displayName:'Employee 3', department:'HR', businessUnit:'Corporate', password:'E3456' },
+    { id:'emp4', name:'Employee 4', displayName:'Employee 4', department:'Product', businessUnit:'Product Development', password:'E4567' },
+    { id:'emp5', name:'Employee 5', displayName:'Employee 5', department:'Support', businessUnit:'Operations', password:'E5678' },
+    { id:'emp6', name:'Employee 6', displayName:'Employee 6', department:'Engineering', businessUnit:'Product Development', password:'E6789' },
+    { id:'emp7', name:'Employee 7', displayName:'Employee 7', department:'Marketing', businessUnit:'Commercial', password:'E7890' }
   ];
+
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+  try { firebase.analytics(); } catch(e) {}
 
   database.ref('appraisal').once('value').then(snapshot => {
     if(!snapshot.exists()){
-      const initData = { employees: defaultEmployees, ratings: {}, completion: {}, submitted: {}, assigned: {}, hrRatings: {}, approved: {}, submissionDates: {}, approvalDates: {} };
+      const initData = {
+        employees: defaultEmployees, ratings: {}, completion: {}, submitted: {}, assigned: {},
+        hrRatings: {}, approved: {}, submissionDates: {}, approvalDates: {}, disputes: {},
+        recallRequests: {}, disputeCounts: {}, recallCounts: {}, cleared: {}, recalled: {},
+        assignSelection: {}, hrPassword: 'admin123', settings: { maxDisputes: 1, maxRecalls: 3 }, categories: CATEGORIES
+      };
       defaultEmployees.forEach(e => {
         initData.ratings[e.id] = Array(totalParams).fill(0);
         initData.completion[e.id] = Array(CATEGORIES.length).fill(false);
@@ -1655,6 +2824,12 @@ tr:hover td{background:var(--gray-50)}
         initData.assigned[e.id] = CATEGORIES.map((_, i) => i);
         initData.hrRatings[e.id] = Array(totalParams).fill(0);
         initData.approved[e.id] = false;
+        initData.disputes[e.id] = {};
+        initData.recallRequests[e.id] = null;
+        initData.disputeCounts[e.id] = 0;
+        initData.recallCounts[e.id] = 0;
+        initData.cleared[e.id] = false;
+        initData.recalled[e.id] = false;
       });
       return database.ref('appraisal').set(initData);
     }
@@ -1672,27 +2847,29 @@ tr:hover td{background:var(--gray-50)}
         localApproved = data.approved || {};
         localSubmissionDates = data.submissionDates || {};
         localApprovalDates = data.approvalDates || {};
-        populateLogin();
-        resetToHRView();
+        localDisputes = data.disputes || {};
+        localRecallRequests = data.recallRequests || {};
+        localDisputeCounts = data.disputeCounts || {};
+        localRecallCounts = data.recallCounts || {};
+        localCleared = data.cleared || {};
+        localRecalled = data.recalled || {};
+        localAssignSelection = data.assignSelection || {};
+        if(data.hrPassword) hrPassword = data.hrPassword;
+        if(data.settings) systemSettings = data.settings;
+        if(data.categories) {
+          CATEGORIES = data.categories;
+          PARAM_OFFSETS = buildParamOffsets();
+          totalParams = totalParamsCount();
+        }
+        updateSyncStatus(true);
       }
     });
   }).catch(err => {
     console.error('Init error:', err);
-    localEmployees = defaultEmployees;
-    defaultEmployees.forEach(e => {
-      localRatings[e.id] = Array(totalParams).fill(0);
-      localCompletion[e.id] = Array(CATEGORIES.length).fill(false);
-      localSubmitted[e.id] = false;
-      localAssigned[e.id] = CATEGORIES.map((_, i) => i);
-      localHrRatings[e.id] = Array(totalParams).fill(0);
-      localApproved[e.id] = false;
-    });
-    populateLogin();
-    resetToHRView();
     updateSyncStatus(false);
   });
 
-  window.__APP = { localEmployees, localRatings, localCompletion, localSubmitted, localAssigned, localHrRatings, localApproved, localSubmissionDates, localApprovalDates, CATEGORIES, computeFinal, computeFinalWithHr };
+  window.__APP = { localEmployees, localRatings, localCompletion, localSubmitted, localAssigned, localHrRatings, localApproved, localSubmissionDates, localApprovalDates, localDisputes, localRecallRequests, localDisputeCounts, localRecallCounts, localCleared, localRecalled, localAssignSelection, CATEGORIES, computeFinal, systemSettings };
 
 })();
 </script>
